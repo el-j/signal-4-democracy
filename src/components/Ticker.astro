@@ -1,0 +1,71 @@
+---
+interface Props {
+	items?: string[];
+}
+
+const {
+	items = ['#SolidarischeHeimat', '#DemokratieSchützen', '#GemeinsamStark', '#HeimatFürAlle', '#100000Stimmen'],
+} = Astro.props;
+---
+
+<div class="ticker" aria-hidden="true">
+	<div class="ticker__track">
+		{
+			Array.from({ length: 2 }).map(() => (
+				<span class="ticker__group">
+					{items.map((item) => (
+						<span>{item}</span>
+					))}
+				</span>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.ticker {
+		background: var(--green-900);
+		overflow: hidden;
+		white-space: nowrap;
+		padding: 14px 0;
+	}
+
+	.ticker__track {
+		display: inline-flex;
+		animation: ticker-scroll 26s linear infinite;
+	}
+
+	.ticker__group {
+		display: inline-flex;
+		flex-shrink: 0;
+	}
+
+	.ticker__group span {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 0.95rem;
+		letter-spacing: 0.03em;
+		color: var(--pink-300);
+		padding: 0 20px;
+		position: relative;
+	}
+
+	.ticker__group span::after {
+		content: '✦';
+		position: absolute;
+		right: -4px;
+		color: var(--green-500);
+	}
+
+	@keyframes ticker-scroll {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ticker__track {
+			animation: none;
+		}
+	}
+</style>

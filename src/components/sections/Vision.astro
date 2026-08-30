@@ -1,0 +1,113 @@
+---
+import Eyebrow from '../ui/Eyebrow.astro';
+import Divider from '../ui/Divider.astro';
+
+interface Props {
+	goals: string[];
+	quote?: string;
+}
+
+const { goals, quote = "Demokratie ist kein Geschenk – sie ist eine Aufgabe. Packen wir's an." } = Astro.props;
+---
+
+<section id="vision" class="vision">
+	<Divider variant="top" />
+	<div class="vision-dots" aria-hidden="true"></div>
+	<div class="container reveal">
+		<Eyebrow label="Unsere Vision für 2030" variant="on-dark" />
+		<div class="vision-grid">
+			<ul class="vision-goals">
+				{goals.map((goal) => <li>{goal}</li>)}
+			</ul>
+			<blockquote>„{quote}“</blockquote>
+		</div>
+	</div>
+</section>
+
+<style>
+	.vision {
+		position: relative;
+		background: linear-gradient(135deg, var(--green-700), var(--green-900));
+		color: #eaf5e2;
+		padding: 90px 0;
+		overflow: hidden;
+	}
+
+	.vision-dots {
+		position: absolute;
+		inset: 0;
+		background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px);
+		background-size: 26px 26px;
+		animation: dots-drift 20s linear infinite;
+		pointer-events: none;
+	}
+
+	@keyframes dots-drift {
+		to {
+			background-position: 26px 26px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.vision-dots {
+			animation: none;
+		}
+	}
+
+	.vision .container {
+		position: relative;
+		z-index: 1;
+	}
+
+	.vision-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: center;
+	}
+
+	.vision-goals {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1.15rem;
+	}
+
+	.vision-goals li {
+		padding-left: 28px;
+		position: relative;
+	}
+
+	.vision-goals li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 10px;
+		width: 12px;
+		height: 12px;
+		background: var(--pink-500);
+		border-radius: 3px;
+		box-shadow: 0 0 12px 2px rgba(239, 143, 184, 0.7);
+	}
+
+	.vision blockquote {
+		margin: 0;
+		font-size: 1.4rem;
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-style: italic;
+		border-left: 3px solid var(--pink-300);
+		padding-left: 22px;
+	}
+
+	@media (max-width: 780px) {
+		.vision-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,26 @@
+---
+// Wavy SVG divider used between sections with different backgrounds.
+// "bottom" sits at the end of a section and dips down; "top" is absolutely
+// positioned over the start of a (usually dark) section and rises up.
+interface Props {
+	variant?: 'bottom' | 'top';
+	color?: string;
+}
+
+const { variant = 'bottom', color = 'var(--paper)' } = Astro.props;
+
+const paths = {
+	bottom: 'M0,32 C300,80 900,-16 1200,32 L1200,60 L0,60 Z',
+	top: 'M0,60 C300,0 900,60 1200,10 L1200,0 L0,0 Z',
+};
+---
+
+<svg
+	class={`divider ${variant === 'top' ? 'divider--top' : ''}`}
+	style={`color: ${color}`}
+	viewBox="0 0 1200 60"
+	preserveAspectRatio="none"
+	aria-hidden="true"
+>
+	<path d={paths[variant]}></path>
+</svg>

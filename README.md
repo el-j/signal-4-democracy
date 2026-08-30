@@ -1,87 +1,84 @@
-# signal-4-democracy (signal-für-demokratie)
-it's about a signal for the democracy in Germany.
+# Signal für Demokratie
 
-**Gemeinsam für eine solidarische Heimat**
+Website für **Signal für Demokratie** – eine Bewegung für eine solidarische Heimat in Deutschland.
 *Demokratie. Gerechtigkeit. Nachbarschaft.*
 
----
+Das inhaltliche Leitbild der Bewegung steht in [MANIFEST.md](MANIFEST.md). Dieses README beschreibt das Website-Projekt selbst.
 
-## **🔥 Warum wir handeln**
+## Tech-Stack
 
-Deutschland gibt uns **Freiheit, Sicherheit und Lebensqualität** – doch diese Errungenschaften sind **kein Selbstläufer**. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. **Wir handeln jetzt**, bevor es zu spät ist.
+Statische Website mit [Astro](https://astro.build), keine zusätzlichen UI-Frameworks.
 
-Unsere Antwort auf Hass und Ausgrenzung:
-✅ **Positive Visionen** statt nur Protest
-✅ **Solidarität, die anpackt** – online und vor Ort
-✅ **Eine Heimat für alle**, die hier leben
+## Projektstruktur
 
----
+```
+├── material/                     Quellmaterial (Logo, Flyer, Design-Entwürfe)
+├── public/
+│   ├── logo.svg                  Logo für Header/Footer
+│   ├── favicon.svg
+│   └── downloads/                Dateien für den Download-Bereich der Seite
+├── src/
+│   ├── components/
+│   │   ├── Header.astro          Sticky Navigation
+│   │   ├── Footer.astro          Footer mit Kontakt-/Link-Spalten
+│   │   ├── Ticker.astro          Scrollender Hashtag-Banner
+│   │   ├── ui/                   Kleine, wiederverwendbare Bausteine
+│   │   │   ├── Eyebrow.astro     Kleines Badge über Überschriften
+│   │   │   ├── SectionHeading.astro
+│   │   │   ├── Button.astro      Button in den Varianten primary/pink/outline
+│   │   │   └── Divider.astro     Wellenförmiger Section-Übergang (SVG)
+│   │   └── sections/             Ein Astro-Component pro Seitenabschnitt
+│   │       ├── Hero.astro
+│   │       ├── Warum.astro
+│   │       ├── Saeulen.astro
+│   │       ├── Regeln.astro
+│   │       ├── Vision.astro
+│   │       ├── Mitmachen.astro
+│   │       └── Download.astro
+│   ├── layouts/
+│   │   └── Layout.astro          HTML-Grundgerüst, Fonts, Hintergrund-Blobs
+│   ├── styles/
+│   │   └── global.css            Farbvariablen, Reset, globale Utility-Klassen
+│   ├── scripts/
+│   │   └── interactions.js       Scroll-Reveal & Header-Scroll-Zustand
+│   └── pages/
+│       └── index.astro           Startseite: Inhalte (Daten) + Abschnitte zusammensetzen
+└── astro.config.mjs
+```
 
-## **🏗️ Unsere 3 Säulen für eine starke Demokratie**
+Jeder Seitenabschnitt (Hero, Warum, Säulen, …) ist eine eigene Komponente unter
+`src/components/sections/` mit eigenem, gekapseltem `<style>`-Block. Wiederkehrende
+UI-Elemente wie Badges, Buttons oder der Section-Divider liegen als kleine
+Komponenten unter `src/components/ui/`. Globale Design-Tokens (Farben, Radius,
+Schriften) und Utility-Klassen (`.btn`, `.card`, `.section`, …) leben zentral in
+[src/styles/global.css](src/styles/global.css).
 
-### **1️⃣ Digitale Aufklärung & Vernetzung**
-*Wissen teilen. Desinformation stoppen. Solidarität sichtbar machen.*
+## Entwicklung
 
-- **Fakten statt Fake News**: Wir entlarven rechte Narrative mit **recherchierten Informationen** – und setzen ihnen **positive Geschichten** entgegen.
-- **Vernetzung, die wirkt**: In Signal und auf Threads bringen wir Engagierte zusammen – für **schlagkräftige Kampagnen** und gemeinsamen Aktivismus.
-- **Ziel**: Bis 2027 **100.000 Menschen** mit faktenbasierten Inhalten erreichen – und zum Mitmachen motivieren.
+```sh
+npm install
+npm run dev       # Dev-Server, siehe Ausgabe für die lokale URL
+npm run build     # Statischen Build nach dist/ erzeugen
+npm run preview   # Build lokal testen
+```
 
-*💡 **Beispiel**: Unsere virale Kampagne #HeimatFürAlle zeigte: **78% der Befragten** fühlen sich nach dem Kontakt mit uns besser informiert.*
+## Inhalte & Material pflegen
 
----
+- Texte der Seite basieren auf [MANIFEST.md](MANIFEST.md). Listen-Inhalte (Säulen, Regeln,
+  Vision-Ziele, Downloads) werden als Daten-Arrays in [src/pages/index.astro](src/pages/index.astro)
+  gepflegt und als Props an die jeweilige Section-Komponente übergeben.
+- Platzhalter für Kontakt, Spenden-Link, Threads/Signal-Handles in [src/components/Footer.astro](src/components/Footer.astro)
+  und in [src/components/sections/Mitmachen.astro](src/components/sections/Mitmachen.astro) sind noch mit echten Angaben zu ersetzen.
+- Neue Downloads (z. B. aktualisierter Flyer) unter `public/downloads/` ablegen und in der
+  `downloads`-Liste in [src/pages/index.astro](src/pages/index.astro) verlinken.
+- Farbschema (Grasgrün & Hellrosa), Radius, Schriften etc. sind als CSS-Variablen in
+  [src/styles/global.css](src/styles/global.css) definiert — dort ändern wirkt sich auf die ganze Seite aus.
+- Neuer Seitenabschnitt: eine Komponente unter `src/components/sections/` anlegen (Markup +
+  eigener `<style>`-Block) und in [src/pages/index.astro](src/pages/index.astro) einbinden.
 
-### **2️⃣ Politisches Engagement für Gerechtigkeit**
-*Rechtsextremismus wächst dort, wo Menschen abgehängt werden. Wir ändern das.*
+## Deployment
 
-- **Soziale Sicherheit für alle**: Wir fordern **Bedingungsloses Grundeinkommen in Pilotregionen** – finanziert durch eine **Vermögenssteuer auf Millionenerben**.
-- **Gerechte Steuern**: Reiche und Konzerne müssen ihren **fairen Beitrag** leisten – für Schulen, Krankenhäuser und Klimaschutz.
-- **Mobilität für alle**: **Kostenloser ÖPNV im ländlichen Raum** – finanziert durch eine **Stadtmaut für SUVs**.
-
-*💡 **Beispiel**: In Kooperation mit lokalen Gewerkschaften haben wir **12 Kommunen** überzeugt, Bürgerräte für gerechte Fördergelder einzuführen.*
-
----
-
-### **3️⃣ Gelebte Solidarität vor Ort**
-*Demokratie entsteht im Miteinander – nicht im Netz.*
-
-- **Aktionen, die verbinden**: Müllsammeln, Dorfplatz-Verschönerung, **Pop-up-Cafés** mit Diskussionen über Demokratie.
-- **Partnerschaften auf Augenhöhe**: Zusammenarbeit mit **Feuerwehren, Sportvereinen und Kulturinitiativen** – für ein lebendiges Land.
-- **Sichtbare Veränderung**: **1.000 lokale Projekte** bis 2030 – von renovierten Sportplätzen bis zu solidarischen Festen.
-
-*💡 **Beispiel**: Unsere **#SolidaritätsKilometer-Tour** durch 50 Dörfer brachte **über 2.000 Menschen** zusammen – und 15 neue Ortsgruppen.*
-
----
-
-## **🛡️ Unsere Regeln: Klar. Fair. Konsequent.**
-
-🔹 **Kein Platz für Hass**: Rassismus, Antisemitismus, Sexismus oder Queerfeindlichkeit führen zum **sofortigen Ausschluss**.
-🔹 **Fakten statt Gerüchte**: Wir teilen nur **geprüfte Informationen** – keine Panikmache, keine Verschwörungstheorien.
-🔹 **Sicherheit geht vor**: **Keine Screenshots oder Weiterleitungen** aus der Signal-Gruppe ohne Absprache.
-🔹 **Fokus auf das Wesentliche**: Keine parteipolitischen Grabenkämpfe – wir konzentrieren uns auf **unsere 3 Säulen**.
-
----
-
-## **🌱 Unsere Vision für 2030**
-
-- **1.000 lokale Gruppen** in ganz Deutschland
-- **Eine Bewegung, die Rechtsextremismus die Luft abwürgt**
-- **Eine Gesellschaft, in der Solidarität und Gerechtigkeit selbstverständlich sind**
-
-*„Demokratie ist kein Geschenk – sie ist eine Aufgabe. **Packen wir’s an.**“*
-
----
-
-## **✊ Mitmachen!**
-
-Du willst **mitgestalten**?
-- **Lokal aktiv werden**: Schreib uns eine **DM auf Threads** ([@Handle]) oder Signal ([Nummer]).
-- **Spenden**: Unterstütze uns mit einem **monatlichen Beitrag** (ab 5€) – **100% fließen in Projekte vor Ort**.
-  → [Spendenlink einfügen]
-- **Weiterleiten**: Teile dieses Leitbild – **je mehr wir sind, desto stärker sind wir!**
-
-*#SolidarischeHeimat #DemokratieSchützen #GemeinsamStark*
-
----
-
-*Kontakt: [E-Mail] | [Website] | [Threads] | [Signal]*
-*Transparenz: Unsere Finanzen und Aktivitäten veröffentlichen wir jährlich im [Jahresbericht].*
+Ein Push nach `main` löst automatisch [.github/workflows/deploy.yml](.github/workflows/deploy.yml) aus:
+Der Build (`npm run build`) wird auf den `gh-pages`-Branch veröffentlicht. `astro.config.mjs`
+ist auf `site`/`base` für `https://el-j.github.io/signal-4-democracy/` eingestellt — bei einer
+eigenen Domain oder einem anderen Repo-Namen müssen diese Werte angepasst werden.

@@ -1,0 +1,77 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Rule {
+	title: string;
+	text: string;
+}
+
+interface Props {
+	rules: Rule[];
+}
+
+const { rules } = Astro.props;
+---
+
+<section id="regeln" class="section regeln">
+	<div class="container">
+		<SectionHeading eyebrow="Unsere Regeln" eyebrowVariant="pink" title="Klar. Fair. Konsequent." />
+		<div class="rules-grid reveal-stagger">
+			{
+				rules.map((rule, i) => (
+					<div class={`rule ${i % 2 === 0 ? 'rule--green' : 'rule--pink'} reveal`} style={`--i:${i}`}>
+						<h4>{rule.title}</h4>
+						<p>{rule.text}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.regeln {
+		background: var(--paper);
+	}
+
+	.rules-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	.rule {
+		border-left: 4px solid var(--green-600);
+		background: var(--green-50);
+		border-radius: 0 16px 16px 0;
+		padding: 20px 24px;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.rule:hover {
+		transform: translateX(6px);
+		box-shadow: var(--shadow);
+	}
+
+	.rule--pink {
+		border-left-color: var(--pink-500);
+		background: var(--pink-50);
+	}
+
+	.rule h4 {
+		margin-bottom: 8px;
+		color: var(--green-800, var(--green-900));
+	}
+
+	.rule p {
+		margin: 0;
+		color: var(--ink-soft);
+		font-size: 0.94rem;
+	}
+
+	@media (max-width: 720px) {
+		.rules-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

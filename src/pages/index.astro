@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Ticker from '../components/Ticker.astro';
+import Hero from '../components/sections/Hero.astro';
+import Warum from '../components/sections/Warum.astro';
+import Saeulen from '../components/sections/Saeulen.astro';
+import Regeln from '../components/sections/Regeln.astro';
+import Vision from '../components/sections/Vision.astro';
+import Mitmachen from '../components/sections/Mitmachen.astro';
+import Download from '../components/sections/Download.astro';
+
+const pillars = [
+	{
+		number: '01',
+		title: 'Digitale Aufklärung & Vernetzung',
+		tagline: 'Wissen teilen. Desinformation stoppen. Solidarität sichtbar machen.',
+		points: [
+			'Fakten statt Fake News: recherchierte Informationen gegen rechte Narrative — und positive Geschichten dagegen.',
+			'Vernetzung, die wirkt: auf Signal und Threads bringen wir Engagierte für schlagkräftige Kampagnen zusammen.',
+			'Ziel: Bis 2027 100.000 Menschen mit faktenbasierten Inhalten erreichen — und zum Mitmachen motivieren.',
+		],
+		example: 'Unsere virale Kampagne #HeimatFürAlle: 78% der Befragten fühlten sich danach besser informiert.',
+	},
+	{
+		number: '02',
+		title: 'Politisches Engagement für Gerechtigkeit',
+		tagline: 'Rechtsextremismus wächst dort, wo Menschen abgehängt werden. Wir ändern das.',
+		points: [
+			'Soziale Sicherheit für alle: Bedingungsloses Grundeinkommen in Pilotregionen, finanziert durch eine Vermögenssteuer auf Millionenerben.',
+			'Gerechte Steuern: Reiche und Konzerne leisten ihren fairen Beitrag — für Schulen, Krankenhäuser und Klimaschutz.',
+			'Mobilität für alle: kostenloser ÖPNV im ländlichen Raum, finanziert durch z.B. eine Stadtmaut.',
+		],
+		example: 'Mit lokalen Gewerkschaften haben wir 12 Kommunen von Bürgerräten für gerechte Fördergelder überzeugt.',
+	},
+	{
+		number: '03',
+		title: 'Gelebte Solidarität vor Ort',
+		tagline: 'Demokratie entsteht im Miteinander — nicht im Netz.',
+		points: [
+			'Aktionen, die verbinden: Müllsammeln, Dorfplatz-Verschönerung, Pop-up-Cafés mit Diskussionen über Demokratie.',
+			'Partnerschaften auf Augenhöhe: mit Feuerwehren, Sportvereinen und Kulturinitiativen für ein lebendiges Land.',
+			'Sichtbare Veränderung: 1.000 lokale Projekte bis 2030 — von renovierten Sportplätzen bis zu solidarischen Festen.',
+		],
+		example: 'Unsere #SolidaritätsKilometer-Tour durch 50 Dörfer brachte über 2.000 Menschen zusammen — und 15 neue Ortsgruppen.',
+	},
+];
+
+const rules = [
+	{
+		title: 'Kein Platz für Hass',
+		text: 'Rassismus, Antisemitismus, Sexismus oder Queerfeindlichkeit führen zum sofortigen Ausschluss.',
+	},
+	{
+		title: 'Fakten statt Gerüchte',
+		text: 'Wir teilen nur geprüfte Informationen — keine Panikmache, keine Verschwörungstheorien.',
+	},
+	{
+		title: 'Sicherheit geht vor',
+		text: 'Keine Screenshots oder Weiterleitungen aus der Signal-Gruppe ohne Absprache.',
+	},
+	{
+		title: 'Fokus auf das Wesentliche',
+		text: 'Keine parteipolitischen Grabenkämpfe — wir konzentrieren uns auf unsere drei Säulen.',
+	},
+];
+
+const visionGoals = [
+	'1.000 lokale Gruppen in ganz Deutschland',
+	'Eine Bewegung, die Rechtsextremismus die Luft abwürgt',
+	'Eine Gesellschaft, in der Solidarität und Gerechtigkeit selbstverständlich sind',
+];
+
+const downloads = [
+	{
+		name: 'Flyer',
+		file: '/downloads/flyer.jpg',
+		format: 'JPG',
+		size: '390 KB',
+		desc: 'Der Signal-für-Demokratie-Flyer zum Ausdrucken und Weitergeben.',
+	},
+	{
+		name: 'Logo',
+		file: '/downloads/logo.svg',
+		format: 'SVG',
+		size: '2 KB',
+		desc: 'Unser Logo als Vektorgrafik — verlustfrei skalierbar für Web und Druck.',
+	},
+	{
+		name: 'Design-Entwurf (Vektor)',
+		file: '/downloads/entwurf-design.svg',
+		format: 'SVG',
+		size: '2,1 MB',
+		desc: 'Der vollständige Gestaltungsentwurf als SVG-Datei.',
+	},
+	{
+		name: 'Design-Entwurf (Druckformat)',
+		file: '/downloads/entwurf-design.eps',
+		format: 'EPS',
+		size: '1,1 MB',
+		desc: 'Der Gestaltungsentwurf im EPS-Format für professionellen Druck.',
+	},
+];
+---
+
+<Layout>
+	<Header />
+
+	<main id="top">
+		<Hero />
+		<Ticker />
+		<Warum />
+		<Saeulen pillars={pillars} />
+		<Regeln rules={rules} />
+		<Vision goals={visionGoals} />
+		<Mitmachen />
+		<Download downloads={downloads} />
+	</main>
+
+	<Footer />
+</Layout>

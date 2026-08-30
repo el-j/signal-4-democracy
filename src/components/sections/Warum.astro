@@ -1,0 +1,72 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const items = [
+	{ lead: 'Positive Visionen', rest: 'statt nur Protest' },
+	{ lead: 'Solidarität, die anpackt', rest: '– online und vor Ort' },
+	{ lead: 'Eine Heimat für alle', rest: ', die hier leben' },
+];
+---
+
+<section id="warum" class="section warum">
+	<div class="container">
+		<SectionHeading eyebrow="Warum wir handeln" eyebrowVariant="pink" title="Unsere Antwort auf Hass und Ausgrenzung" />
+		<div class="warum-grid reveal-stagger">
+			{
+				items.map((item, i) => (
+					<div class="warum-item reveal" style={`--i:${i}`}>
+						<span class="warum-check">✓</span>
+						<p>
+							<strong>{item.lead}</strong> {item.rest}
+						</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.warum {
+		background: var(--paper);
+	}
+
+	.warum-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+	}
+
+	.warum-item {
+		background: var(--pink-50);
+		border: 1px solid var(--pink-100);
+		border-radius: var(--radius);
+		padding: 24px;
+		display: flex;
+		align-items: flex-start;
+		gap: 14px;
+	}
+
+	.warum-item p {
+		margin: 0;
+	}
+
+	.warum-check {
+		flex-shrink: 0;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: var(--green-600);
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+	}
+
+	@media (max-width: 860px) {
+		.warum-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

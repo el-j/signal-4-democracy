@@ -1,0 +1,101 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+
+const cards = [
+	{
+		icon: '💬',
+		title: 'Lokal aktiv werden',
+		text: 'Schreib uns eine DM auf Threads oder in unserer Signal-Gruppe.',
+		cta: { label: 'Threads & Signal', href: '#', variant: 'outline' as const },
+	},
+	{
+		icon: '💚',
+		title: 'Spenden',
+		text: 'Unterstütze uns mit einem monatlichen Beitrag ab 5 € – 100% fließen in Projekte vor Ort.',
+		cta: { label: 'Jetzt spenden', href: '#', variant: 'pink' as const },
+	},
+	{
+		icon: '📣',
+		title: 'Weiterleiten',
+		text: 'Teile dieses Leitbild – je mehr wir sind, desto stärker sind wir!',
+		cta: { label: 'Material teilen', href: '#download', variant: 'outline' as const },
+	},
+];
+---
+
+<section id="mitmachen" class="section mitmachen">
+	<div class="container mitmachen__inner">
+		<SectionHeading eyebrow="Mitmachen" eyebrowVariant="pink" title="Du willst mitgestalten?" />
+		<div class="mitmachen-grid reveal-stagger">
+			{
+				cards.map((card, i) => (
+					<div class="mitmachen-card reveal" style={`--i:${i}`}>
+						<span class="mitmachen-card__icon">{card.icon}</span>
+						<h4>{card.title}</h4>
+						<p>{card.text}</p>
+						<Button href={card.cta.href} variant={card.cta.variant}>
+							{card.cta.label}
+						</Button>
+					</div>
+				))
+			}
+		</div>
+		<p class="hashtags">#SolidarischeHeimat · #DemokratieSchützen · #GemeinsamStark</p>
+	</div>
+</section>
+
+<style>
+	.mitmachen {
+		background: var(--pink-50);
+	}
+
+	.mitmachen-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+	}
+
+	.mitmachen-card {
+		background: var(--paper);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 28px;
+		text-align: center;
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
+	}
+
+	.mitmachen-card:hover {
+		transform: translateY(-6px);
+		box-shadow: var(--shadow-pop);
+	}
+
+	.mitmachen-card__icon {
+		display: inline-block;
+		font-size: 1.8rem;
+		margin-bottom: 10px;
+	}
+
+	.mitmachen-card p {
+		color: var(--ink-soft);
+		font-size: 0.94rem;
+	}
+
+	.hashtags {
+		text-align: center;
+		margin-top: 40px;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 1.1rem;
+		background: var(--gradient-loud);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	@media (max-width: 860px) {
+		.mitmachen-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

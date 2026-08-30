@@ -1,0 +1,12 @@
+---
+interface Props {
+	label: string;
+	variant?: 'green' | 'pink' | 'on-dark';
+}
+
+const { label, variant = 'green' } = Astro.props;
+
+const className = variant === 'on-dark' ? 'eyebrow--on-dark' : variant === 'pink' ? 'eyebrow eyebrow--pink' : 'eyebrow';
+---
+
+<span class={className}>{label}</span>

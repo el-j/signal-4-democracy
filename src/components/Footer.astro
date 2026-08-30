@@ -1,0 +1,126 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="container footer-grid">
+		<div class="footer-brand">
+			<img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Signal für Demokratie Logo" class="footer-logo" />
+			<p>
+				Signal für Demokratie — eine Bewegung für eine solidarische Heimat.
+				<br />
+				Demokratie. Gerechtigkeit. Nachbarschaft.
+			</p>
+		</div>
+
+		<div class="footer-col">
+			<h4>Kontakt</h4>
+			<ul>
+				<li><a href="mailto:kontakt@signal-fuer-demokratie.de">E-Mail</a></li>
+				<li><a href="#">Threads</a></li>
+				<li><a href="#">Signal-Gruppe</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-col">
+			<h4>Mehr</h4>
+			<ul>
+				<li><a href="#saeulen">Unsere Säulen</a></li>
+				<li><a href="#regeln">Unsere Regeln</a></li>
+				<li><a href="#download">Download</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container footer-bottom">
+		<p>© {year} Signal für Demokratie. Alle Inhalte unter #SolidarischeHeimat.</p>
+		<p>Transparenz: Finanzen und Aktivitäten veröffentlichen wir jährlich im Jahresbericht.</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		position: relative;
+		background: var(--green-900);
+		color: #dfeed8;
+		padding: 56px 0 24px;
+	}
+
+	.site-footer::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: var(--gradient-loud);
+	}
+
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		gap: 32px;
+		padding-bottom: 32px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+	}
+
+	.footer-brand {
+		max-width: 340px;
+	}
+
+	.footer-logo {
+		height: 44px;
+		width: auto;
+		margin-bottom: 16px;
+	}
+
+	.footer-brand p {
+		color: #b9d3ae;
+		font-size: 0.92rem;
+	}
+
+	.footer-col h4 {
+		color: #fff;
+		font-size: 0.95rem;
+		margin-bottom: 14px;
+	}
+
+	.footer-col ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.footer-col a {
+		color: #b9d3ae;
+		text-decoration: none;
+		font-size: 0.92rem;
+	}
+
+	.footer-col a:hover {
+		color: var(--pink-300);
+	}
+
+	.footer-bottom {
+		padding-top: 20px;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 0.82rem;
+		color: #93ac89;
+	}
+
+	.footer-bottom p {
+		margin: 0;
+	}
+
+	@media (max-width: 720px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

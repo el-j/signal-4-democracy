@@ -1,0 +1,18 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+	eyebrow: string;
+	eyebrowVariant?: 'green' | 'pink' | 'on-dark';
+	title: string;
+	description?: string;
+}
+
+const { eyebrow, eyebrowVariant = 'green', title, description } = Astro.props;
+---
+
+<div class="section-heading reveal">
+	<Eyebrow label={eyebrow} variant={eyebrowVariant} />
+	<h2>{title}</h2>
+	{description && <p>{description}</p>}
+</div>
