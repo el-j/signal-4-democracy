@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+---
+
+<Layout
+	title="Impressum — Signal für Demokratie"
+	description="Rechtliche Angaben und Impressum der Initiative Signal für Demokratie gemäß § 5 DDG und § 18 Abs. 2 MStV."
+>
+	<Header />
+
+	<main class="legal-page">
+		<div class="container">
+			<div class="legal-header">
+				<a href={`${import.meta.env.BASE_URL}`} class="back-link">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="19" y1="12" x2="5" y2="12"></line>
+						<polyline points="12 19 5 12 12 5"></polyline>
+					</svg>
+					Zurück zur Startseite
+				</a>
+				<Eyebrow text="Rechtliche Hinweise" />
+				<h1>Impressum</h1>
+				<p class="legal-subtitle">
+					Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG) und § 18 Abs. 2 Medienstaatsvertrag (MStV)
+				</p>
+			</div>
+
+			<div class="legal-nav">
+				<a href={`${import.meta.env.BASE_URL}impressum/`} class="legal-nav-link active">Impressum</a>
+				<a href={`${import.meta.env.BASE_URL}datenschutz/`} class="legal-nav-link">Datenschutzerklärung</a>
+			</div>
+
+			<article class="legal-card card">
+				<section class="legal-section">
+					<h2>1. Angaben gemäß § 5 DDG</h2>
+					<div class="legal-details">
+						<p><strong>Name der Initiative:</strong><br />Signal für Demokratie</p>
+						<p><strong>Art der Vereinigung:</strong><br />Zivilgesellschaftliche Initiative &amp; Bündnis für Demokratie und Zusammenhalt</p>
+						<p><strong>Vertreten durch:</strong><br />Initiative „Signal für Demokratie“<br />
+							<span class="placeholder-tag">[Name der vertretungsberechtigten Person / Sprecher:in]</span>
+						</p>
+						<p><strong>Ladungsfähige Anschrift / Postadresse:</strong><br />
+							Signal für Demokratie<br />
+							<span class="placeholder-tag">[Straße und Hausnummer]</span><br />
+							<span class="placeholder-tag">[PLZ Ort]</span><br />
+							Deutschland
+						</p>
+					</div>
+				</section>
+
+				<section class="legal-section">
+					<h2>2. Kontakt</h2>
+					<div class="legal-details">
+						<p><strong>E-Mail:</strong> <a href="mailto:kontakt@signal-fuer-demokratie.de">kontakt@signal-fuer-demokratie.de</a></p>
+						<p><strong>Website:</strong> <a href="https://signal-fuer-demokratie.de">signal-fuer-demokratie.de</a></p>
+					</div>
+				</section>
+
+				<section class="legal-section">
+					<h2>3. Verantwortlich für journalistisch-redaktionelle Inhalte nach § 18 Abs. 2 MStV</h2>
+					<p>
+						<span class="placeholder-tag">[Name der verantwortlichen Person gem. § 18 Abs. 2 MStV]</span><br />
+						Signal für Demokratie<br />
+						<span class="placeholder-tag">[Straße und Hausnummer]</span><br />
+						<span class="placeholder-tag">[PLZ Ort]</span>, Deutschland
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>4. Haftung für Inhalte</h2>
+					<p>
+						Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+					</p>
+					<p>
+						Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>5. Haftung für Links</h2>
+					<p>
+						Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+					</p>
+					<p>
+						Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>6. Urheberrecht &amp; Open Content</h2>
+					<p>
+						Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der vorherigen schriftlichen Zustimmung der jeweiligen Autor:innen bzw. Ersteller:innen.
+					</p>
+					<p>
+						Downloads und Kopien dieser Seite sowie des bereitgestellten Kampagnenmaterials (Flyer, Plakate, Share-Pics unter <em>#SolidarischeHeimat</em>) sind für den privaten, nicht-kommerziellen Gebrauch sowie für den zivilgesellschaftlichen und demokratiefördernden Einsatz ausdrücklich erwünscht und gestattet.
+					</p>
+					<p>
+						Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>7. EU-Streitschlichtung &amp; Verbraucherstreitbeilegung</h2>
+					<p>
+						Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+						<a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br />
+						Unsere E-Mail-Adresse finden Sie oben im Impressum.
+					</p>
+					<p>
+						Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+					</p>
+				</section>
+			</article>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.legal-page {
+		padding: 48px 0 80px;
+		min-height: calc(100vh - 400px);
+	}
+
+	.legal-header {
+		margin-bottom: 32px;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--green-700);
+		font-weight: 600;
+		font-size: 0.9rem;
+		text-decoration: none;
+		margin-bottom: 20px;
+		transition: color 0.2s ease, transform 0.2s ease;
+	}
+
+	.back-link:hover {
+		color: var(--green-900);
+		transform: translateX(-3px);
+	}
+
+	.legal-header h1 {
+		font-family: var(--font-display);
+		font-size: clamp(2.2rem, 4vw, 3rem);
+		color: var(--green-900);
+		margin: 8px 0 12px;
+	}
+
+	.legal-subtitle {
+		font-size: 1.05rem;
+		color: var(--ink-soft);
+		max-width: 720px;
+		margin: 0;
+	}
+
+	.legal-nav {
+		display: flex;
+		gap: 12px;
+		margin-bottom: 28px;
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 12px;
+	}
+
+	.legal-nav-link {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 0.95rem;
+		text-decoration: none;
+		color: var(--ink-soft);
+		padding: 8px 16px;
+		border-radius: 999px;
+		background: transparent;
+		transition: all 0.2s ease;
+	}
+
+	.legal-nav-link:hover {
+		color: var(--green-700);
+		background: var(--green-50);
+	}
+
+	.legal-nav-link.active {
+		color: #fff;
+		background: var(--green-700);
+	}
+
+	.legal-card {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 36px;
+		line-height: 1.7;
+	}
+
+	.legal-section h2 {
+		font-size: 1.3rem;
+		margin-bottom: 14px;
+		color: var(--green-900);
+		border-bottom: 2px solid var(--green-100);
+		padding-bottom: 8px;
+	}
+
+	.legal-section p {
+		color: var(--ink);
+		margin-bottom: 12px;
+	}
+
+	.legal-section p:last-child {
+		margin-bottom: 0;
+	}
+
+	.legal-details {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 16px;
+		background: var(--green-50);
+		padding: 20px 24px;
+		border-radius: 12px;
+		border: 1px solid var(--border);
+	}
+
+	.legal-details p {
+		margin: 0;
+		font-size: 0.95rem;
+	}
+
+	.placeholder-tag {
+		display: inline-block;
+		background: #fff3d6;
+		color: #8f5b00;
+		border: 1px dashed #d99b26;
+		padding: 2px 8px;
+		border-radius: 6px;
+		font-size: 0.88rem;
+		margin-top: 4px;
+	}
+
+	@media (max-width: 720px) {
+		.legal-card {
+			padding: 24px 18px;
+		}
+
+		.legal-details {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,330 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+---
+
+<Layout
+	title="Datenschutzerklärung — Signal für Demokratie"
+	description="Datenschutzerklärung und Informationen zur Datenverarbeitung der Initiative Signal für Demokratie gemäß DSGVO."
+>
+	<Header />
+
+	<main class="legal-page">
+		<div class="container">
+			<div class="legal-header">
+				<a href={`${import.meta.env.BASE_URL}`} class="back-link">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="19" y1="12" x2="5" y2="12"></line>
+						<polyline points="12 19 5 12 12 5"></polyline>
+					</svg>
+					Zurück zur Startseite
+				</a>
+				<Eyebrow text="Datenschutz &amp; Transparenz" />
+				<h1>Datenschutzerklärung</h1>
+				<p class="legal-subtitle">
+					Informationen über die Verarbeitung Ihrer personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) und des Telekommunikation-Digitale-Dienste-Datenschutz-Gesetzes (TDDDG).
+				</p>
+			</div>
+
+			<div class="legal-nav">
+				<a href={`${import.meta.env.BASE_URL}impressum/`} class="legal-nav-link">Impressum</a>
+				<a href={`${import.meta.env.BASE_URL}datenschutz/`} class="legal-nav-link active">Datenschutzerklärung</a>
+			</div>
+
+			<article class="legal-card card">
+				<section class="legal-section">
+					<h2>1. Verantwortlicher für die Datenverarbeitung</h2>
+					<p>
+						Verantwortlich für die Erhebung und Verarbeitung personenbezogener Daten auf dieser Website im Sinne der DSGVO (Art. 4 Nr. 7 DSGVO) ist:
+					</p>
+					<div class="legal-details">
+						<p><strong>Initiative:</strong><br />Signal für Demokratie</p>
+						<p><strong>Vertreten durch:</strong><br />
+							<span class="placeholder-tag">[Name der vertretungsberechtigten Person / Sprecher:in]</span>
+						</p>
+						<p><strong>Anschrift:</strong><br />
+							Signal für Demokratie<br />
+							<span class="placeholder-tag">[Straße und Hausnummer]</span><br />
+							<span class="placeholder-tag">[PLZ Ort]</span>, Deutschland
+						</p>
+						<p><strong>E-Mail:</strong><br /><a href="mailto:kontakt@signal-fuer-demokratie.de">kontakt@signal-fuer-demokratie.de</a></p>
+					</div>
+				</section>
+
+				<section class="legal-section">
+					<h2>2. Grundsätzliches zur Datenverarbeitung</h2>
+					<p>
+						Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wir verfolgen den Grundsatz der Datensparsamkeit (Privacy by Design): Wir erheben nur Daten, die technisch für den sicheren und stabilen Betrieb dieses Informationsangebots zwingend erforderlich sind oder einer datenschutzfreundlichen Reichweitenanalyse dienen.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>3. Bereitstellung der Website &amp; Server-Log-Dateien</h2>
+					<p>
+						Beim Aufrufen unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Webserver unseres Hosting-Dienstleisters (z.&nbsp;B. GitHub Pages / Content Delivery Network) gesendet. Diese Informationen werden temporär in sogenannten Server-Logfiles gespeichert:
+					</p>
+					<ul>
+						<li>Browsertyp und Browserversion</li>
+						<li>Verwendetes Betriebssystem</li>
+						<li>Referrer-URL (die zuvor besuchte Seite)</li>
+						<li>Hostname bzw. anonymisierte/gekürzte IP-Adresse des anfragenden Rechners</li>
+						<li>Datum und Uhrzeit der Serveranfrage</li>
+						<li>Übertragene Datenmenge und Zugriffsstatus (HTTP-Statuscode)</li>
+					</ul>
+					<p>
+						<strong>Rechtsgrundlage:</strong> Die Verarbeitung erfolgt gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> auf Basis unseres berechtigten Interesses an der technisch fehlerfreien Darstellung, Stabilität und IT-Sicherheit unserer Website. Eine Zusammenführung dieser Daten mit anderen Datenquellen oder eine Identifizierung einzelner Besucher findet nicht statt.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>4. Lokale Schriftarten (Self-Hosted Fonts – 100% DSGVO-konform)</h2>
+					<p>
+						Diese Seite nutzt zur einheitlichen und ansprechenden Darstellung von Schriftarten ausschließlich lokal gehostete Schriftarten (<em>Fredoka</em>, <em>Poppins</em>, <em>Inter</em>).
+					</p>
+					<p>
+						Die Schriftarten sind vollständig auf unserem Webspace eingebunden und werden direkt von unserem Server geladen. Es besteht <strong>keinerlei Verbindung zu externen Servern</strong> (wie Google Fonts oder Google CDN). Es werden keine IP-Adressen oder sonstige Daten an Dritte übermittelt.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>5. Datenschutzfreundliche Webanalyse mit Umami (Self-Hosted auf Vercel)</h2>
+					<p>
+						Zur statistischen Reichweitenmessung und Optimierung unseres Internetauftritts setzen wir die datenschutzfreundliche Open-Source-Webanalyse-Software <strong>Umami</strong> ein.
+					</p>
+					<p>
+						Unsere Umami-Instanz wird als eigenständige, selbst gehostete Anwendung auf der Cloud-Plattform <strong>Vercel</strong> betrieben (Diensteanbieter: Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA).
+					</p>
+					<div class="highlight-box">
+						<p><strong>Besondere Datenschutzmerkmale von Umami:</strong></p>
+						<ul>
+							<li><strong>Keine Cookies:</strong> Umami speichert keine Cookies, keine Tracker und keine Identifikatoren auf Ihrem Endgerät (Einhaltung von § 25 TDDDG ohne Erfordernis eines Cookie-Banners).</li>
+							<li><strong>Kein Personenbezug / Hash-Verfahren:</strong> Es werden keine personenbezogenen Daten im Klartext gespeichert. Die IP-Adresse und der User-Agent werden mit einem täglich wechselnden Salt gehasht, sodass keine seitenübergreifende Wiedererkennung oder Profilbildung möglich ist.</li>
+							<li><strong>Kein Cross-Site-Tracking:</strong> Daten werden ausschließlich aggregiert für diese Domain ausgewertet und niemals mit Drittdaten verknüpft oder an Werbenetzwerke weitergegeben.</li>
+						</ul>
+					</div>
+					<p><strong>Erhobene Messwerte:</strong></p>
+					<ul>
+						<li>Anonyme Seitenaufrufe (URL / Pfad der besuchten Seite)</li>
+						<li>Referrer-Website (von welcher Seite Sie zu uns gelangt sind)</li>
+						<li>Gerätetyp (Mobilgerät / Desktop), Betriebssystem und Browsertyp</li>
+						<li>Ungefähres Land / Region (abgeleitet aus der anonymisierten Standortbestimmung)</li>
+						<li>Bildschirmauflösung und Browsersprache</li>
+					</ul>
+					<p>
+						<strong>Rechtsgrundlage:</strong> Die Verarbeitung der aggregierten statistischen Daten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (unser berechtigtes Interesse an der bedarfsgerechten Gestaltung, Fehlerbehebung und statistischen Reichweitenanalyse unserer Informationskampagne für Demokratie).
+					</p>
+					<p>
+						<strong>Widerspruch &amp; Do Not Track:</strong> Umami respektiert standardmäßig die „Do Not Track“ (DNT)- und „Global Privacy Control“ (GPC)-Einstellungen Ihres Browsers. Wenn Sie diese Funktion in Ihren Browsereinstellungen aktiviert haben, werden keinerlei Besuchsdaten erfasst.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>6. Kontaktaufnahme (E-Mail, Threads, Signal)</h2>
+					<p>
+						Wenn Sie uns per E-Mail kontaktieren, werden die von Ihnen übermittelten Daten (z.&nbsp;B. Name, E-Mail-Adresse, Inhalt der Nachricht) bei uns gespeichert, um Ihre Anfrage zu bearbeiten und etwaige Anschlussfragen zu beantworten.
+					</p>
+					<p>
+						<strong>Rechtsgrundlage:</strong> Die Verarbeitung erfolgt zur Erfüllung von Anfragen oder vorvertraglichen Maßnahmen gemäß <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> sowie auf Grundlage unseres berechtigten Interesses an der Kommunikation mit Interessierten und Unterstützer:innen gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>.
+					</p>
+					<p>
+						<strong>Messenger &amp; Soziale Netzwerke:</strong> Wenn Sie über externe Dienste wie Threads (Meta Platforms Ireland Ltd.) oder Signal (Signal Messenger LLC) mit uns in Kontakt treten, gelten ergänzend die Datenschutzbestimmungen der jeweiligen Anbieter.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>7. Ihre Rechte als betroffene Person</h2>
+					<p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit folgende Rechte:</p>
+					<ul>
+						<li><strong>Recht auf Auskunft (Art. 15 DSGVO):</strong> Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob personenbezogene Daten verarbeitet werden, und Auskunft über diese Daten zu erhalten.</li>
+						<li><strong>Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sie können die unverzügliche Berichtigung unrichtiger oder die Vervollständigung unvollständiger personenbezogener Daten verlangen.</li>
+						<li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Sie können die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</li>
+						<li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</li>
+						<li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie können verlangen, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li>
+						<li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Sofern Ihre Daten auf Grundlage von berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO) verarbeitet werden, haben Sie das Recht, Widerspruch gegen die Verarbeitung einzulegen.</li>
+						<li><strong>Beschwerderecht bei einer Aufsichtsbehörde (Art. 77 DSGVO):</strong> Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren (z.&nbsp;B. bei der Landesbeauftragten für Datenschutz Ihres Bundeslandes).</li>
+					</ul>
+					<p>
+						Zur Ausübung Ihrer Rechte reicht eine formlose Mitteilung per E-Mail an: <a href="mailto:kontakt@signal-fuer-demokratie.de">kontakt@signal-fuer-demokratie.de</a>.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>8. SSL- bzw. TLS-Verschlüsselung</h2>
+					<p>
+						Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>9. Aktualität und Änderung dieser Datenschutzerklärung</h2>
+					<p>
+						Diese Datenschutzerklärung ist aktuell gültig (Stand: August 2026). Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher bzw. behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung anzupassen.
+					</p>
+				</section>
+			</article>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.legal-page {
+		padding: 48px 0 80px;
+		min-height: calc(100vh - 400px);
+	}
+
+	.legal-header {
+		margin-bottom: 32px;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--green-700);
+		font-weight: 600;
+		font-size: 0.9rem;
+		text-decoration: none;
+		margin-bottom: 20px;
+		transition: color 0.2s ease, transform 0.2s ease;
+	}
+
+	.back-link:hover {
+		color: var(--green-900);
+		transform: translateX(-3px);
+	}
+
+	.legal-header h1 {
+		font-family: var(--font-display);
+		font-size: clamp(2.2rem, 4vw, 3rem);
+		color: var(--green-900);
+		margin: 8px 0 12px;
+	}
+
+	.legal-subtitle {
+		font-size: 1.05rem;
+		color: var(--ink-soft);
+		max-width: 720px;
+		margin: 0;
+	}
+
+	.legal-nav {
+		display: flex;
+		gap: 12px;
+		margin-bottom: 28px;
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 12px;
+	}
+
+	.legal-nav-link {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 0.95rem;
+		text-decoration: none;
+		color: var(--ink-soft);
+		padding: 8px 16px;
+		border-radius: 999px;
+		background: transparent;
+		transition: all 0.2s ease;
+	}
+
+	.legal-nav-link:hover {
+		color: var(--green-700);
+		background: var(--green-50);
+	}
+
+	.legal-nav-link.active {
+		color: #fff;
+		background: var(--green-700);
+	}
+
+	.legal-card {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 36px;
+		line-height: 1.7;
+	}
+
+	.legal-section h2 {
+		font-size: 1.3rem;
+		margin-bottom: 14px;
+		color: var(--green-900);
+		border-bottom: 2px solid var(--green-100);
+		padding-bottom: 8px;
+	}
+
+	.legal-section p {
+		color: var(--ink);
+		margin-bottom: 12px;
+	}
+
+	.legal-section p:last-child {
+		margin-bottom: 0;
+	}
+
+	.legal-section ul {
+		margin: 0 0 16px 20px;
+		padding: 0;
+		color: var(--ink);
+	}
+
+	.legal-section li {
+		margin-bottom: 8px;
+	}
+
+	.legal-details {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 16px;
+		background: var(--green-50);
+		padding: 20px 24px;
+		border-radius: 12px;
+		border: 1px solid var(--border);
+	}
+
+	.legal-details p {
+		margin: 0;
+		font-size: 0.95rem;
+	}
+
+	.placeholder-tag {
+		display: inline-block;
+		background: #fff3d6;
+		color: #8f5b00;
+		border: 1px dashed #d99b26;
+		padding: 2px 8px;
+		border-radius: 6px;
+		font-size: 0.88rem;
+		margin-top: 4px;
+	}
+
+	.highlight-box {
+		background: var(--green-50);
+		border-left: 4px solid var(--green-600);
+		padding: 16px 20px;
+		border-radius: 0 12px 12px 0;
+		margin: 16px 0;
+	}
+
+	.highlight-box p {
+		margin-bottom: 8px;
+	}
+
+	.highlight-box ul {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 720px) {
+		.legal-card {
+			padding: 24px 18px;
+		}
+
+		.legal-details {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

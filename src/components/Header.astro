@@ -1,20 +1,22 @@
 ---
 import Button from './ui/Button.astro';
 
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const links = [
-	{ href: '#warum', label: 'Warum wir handeln' },
-	{ href: '#saeulen', label: 'Unsere Säulen' },
-	{ href: '#regeln', label: 'Regeln' },
-	{ href: '#vision', label: 'Vision 2030' },
-	{ href: '#download', label: 'Download' },
+	{ href: `${base}#warum`, label: 'Warum wir handeln' },
+	{ href: `${base}#saeulen`, label: 'Unsere Säulen' },
+	{ href: `${base}#regeln`, label: 'Regeln' },
+	{ href: `${base}#vision`, label: 'Vision 2030' },
+	{ href: `${base}#download`, label: 'Download' },
 ];
 ---
 
 <header class="site-header">
 	<div class="signal-stripe" aria-hidden="true"></div>
 	<div class="container bar">
-		<a class="brand" href="#top">
-			<img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Signal für Demokratie Logo" class="brand__logo" />
+		<a class="brand" href={base}>
+			<img src={`${base}logo.svg`} alt="Signal für Demokratie Logo" class="brand__logo" />
 			<span class="brand__name">Signal für<br />Demokratie</span>
 		</a>
 
@@ -22,7 +24,7 @@ const links = [
 			{links.map((link) => <a href={link.href}>{link.label}</a>)}
 		</nav>
 
-		<Button href="#mitmachen" class="nav-cta">Mitmachen</Button>
+		<Button href={`${base}#mitmachen`} class="nav-cta">Mitmachen</Button>
 
 		<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
 		<label for="nav-toggle" class="nav-toggle" aria-label="Menü öffnen">
@@ -31,7 +33,7 @@ const links = [
 
 		<nav class="nav-mobile" aria-label="Mobile Navigation">
 			{links.map((link) => <a href={link.href}>{link.label}</a>)}
-			<Button href="#mitmachen">Mitmachen</Button>
+			<Button href={`${base}#mitmachen`}>Mitmachen</Button>
 		</nav>
 	</div>
 </header>

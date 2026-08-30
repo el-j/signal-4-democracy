@@ -1,11 +1,12 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
 
 <footer class="site-footer">
 	<div class="container footer-grid">
 		<div class="footer-brand">
-			<img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Signal für Demokratie Logo" class="footer-logo" />
+			<img src={`${base}logo.svg`} alt="Signal für Demokratie Logo" class="footer-logo" />
 			<p>
 				Signal für Demokratie — eine Bewegung für eine solidarische Heimat.
 				<br />
@@ -23,18 +24,26 @@ const year = new Date().getFullYear();
 		</div>
 
 		<div class="footer-col">
-			<h4>Mehr</h4>
+			<h4>Rechtliches &amp; Mehr</h4>
 			<ul>
-				<li><a href="#saeulen">Unsere Säulen</a></li>
-				<li><a href="#regeln">Unsere Regeln</a></li>
-				<li><a href="#download">Download</a></li>
+				<li><a href={`${base}impressum/`}>Impressum</a></li>
+				<li><a href={`${base}datenschutz/`}>Datenschutzerklärung</a></li>
+				<li><a href={`${base}#saeulen`}>Unsere Säulen</a></li>
+				<li><a href={`${base}#regeln`}>Unsere Regeln</a></li>
+				<li><a href={`${base}#download`}>Downloads</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="container footer-bottom">
 		<p>© {year} Signal für Demokratie. Alle Inhalte unter #SolidarischeHeimat.</p>
-		<p>Transparenz: Finanzen und Aktivitäten veröffentlichen wir jährlich im Jahresbericht.</p>
+		<div class="footer-bottom-links">
+			<span>Transparenz: Finanzen und Aktivitäten im Jahresbericht</span>
+			<span class="sep">·</span>
+			<a href={`${base}impressum/`}>Impressum</a>
+			<span class="sep">·</span>
+			<a href={`${base}datenschutz/`}>Datenschutz</a>
+		</div>
 	</div>
 </footer>
 
@@ -98,6 +107,7 @@ const year = new Date().getFullYear();
 		color: #b9d3ae;
 		text-decoration: none;
 		font-size: 0.92rem;
+		transition: color 0.2s ease;
 	}
 
 	.footer-col a:hover {
@@ -108,8 +118,9 @@ const year = new Date().getFullYear();
 		padding-top: 20px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		flex-wrap: wrap;
-		gap: 8px;
+		gap: 12px;
 		font-size: 0.82rem;
 		color: #93ac89;
 	}
@@ -118,9 +129,36 @@ const year = new Date().getFullYear();
 		margin: 0;
 	}
 
+	.footer-bottom-links {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.footer-bottom-links a {
+		color: #b9d3ae;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.footer-bottom-links a:hover {
+		color: #fff;
+		text-decoration: underline;
+	}
+
+	.sep {
+		opacity: 0.5;
+	}
+
 	@media (max-width: 720px) {
 		.footer-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.footer-bottom {
+			flex-direction: column;
+			align-items: flex-start;
 		}
 	}
 </style>
