@@ -1,0 +1,2 @@
+# Ignore all EPS files from language statistics
+*.eps linguist-material
