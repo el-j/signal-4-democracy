@@ -1,4 +1,2 @@
 # Ignore all EPS files from language statistics
-
-public/downloads/*.eps linguist-vendored
-material/*.eps linguist-vendored
+*.eps linguist-detectable=false
