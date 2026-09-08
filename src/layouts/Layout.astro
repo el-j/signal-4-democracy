@@ -10,6 +10,7 @@ import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 import '../styles/global.css';
+import { t } from '../i18n/index';
 
 interface Props {
 	title?: string;
@@ -17,8 +18,8 @@ interface Props {
 }
 
 const {
-	title = 'Signal für Demokratie — Gemeinsam für eine solidarische Heimat',
-	description = 'Demokratie. Gerechtigkeit. Nachbarschaft. Eine Bewegung für eine solidarische Heimat in Deutschland.',
+	title = t('site_title', 'Signal für Demokratie — Gemeinsam für eine solidarische Heimat'),
+	description = t('site_description', 'Demokratie. Gerechtigkeit. Nachbarschaft. Eine Bewegung für eine solidarische Heimat in Deutschland.'),
 } = Astro.props;
 ---
 

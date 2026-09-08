@@ -2,60 +2,28 @@
 import Eyebrow from '../ui/Eyebrow.astro';
 import Button from '../ui/Button.astro';
 import Divider from '../ui/Divider.astro';
+import { t, getInitiatives } from '../../i18n/index';
 
-const initiatives = [
-	{
-		name: 'Widersetzen',
-		url: 'https://widersetzen.com',
-		domain: 'widersetzen.com',
-		tag: 'Aktionsbündnis',
-	},
-	{
-		name: 'Zusammen gegen Rechts',
-		url: 'https://zusammen-gegen-rechts.org',
-		domain: 'zusammen-gegen-rechts.org',
-		tag: 'Demokratie-Bündnis',
-	},
-	{
-		name: 'Omas gegen Rechts',
-		url: 'https://omasgegenrechts.de',
-		domain: 'omasgegenrechts.de',
-		tag: 'Zivilcourage',
-	},
-	{
-		name: 'Campact',
-		url: 'https://campact.de',
-		domain: 'campact.de',
-		tag: 'Bürgerbewegung',
-	},
-	{
-		name: 'Correctiv',
-		url: 'https://correctiv.org',
-		domain: 'correctiv.org',
-		tag: 'Recherche-Netzwerk',
-	},
-];
+const initiatives = getInitiatives();
 ---
 
 <section class="hero">
 	<div class="container hero__inner">
-		<Eyebrow label="Gemeinsam für eine solidarische Heimat" />
-		<h1>Ein Signal <span class="hero__loud">für Demokratie.</span></h1>
-		<p class="hero__tagline">Demokratie. Gerechtigkeit. Nachbarschaft.</p>
+		<Eyebrow label={t('hero_eyebrow', 'Gemeinsam für eine solidarische Heimat')} />
+		<h1>{t('hero_title_prefix', 'Ein Signal')} <span class="hero__loud">{t('hero_title_loud', 'für Demokratie.')}</span></h1>
+		<p class="hero__tagline">{t('hero_tagline', 'Demokratie. Gerechtigkeit. Nachbarschaft.')}</p>
 		<p class="hero__lead">
-			Deutschland gibt uns Freiheit, Sicherheit und Lebensqualität – doch diese Errungenschaften sind kein
-			Selbstläufer. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. Wir
-			handeln jetzt, bevor es zu spät ist.
+			{t('hero_lead', 'Deutschland gibt uns Freiheit, Sicherheit und Lebensqualität – doch diese Errungenschaften sind kein Selbstläufer. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. Wir handeln jetzt, bevor es zu spät ist.')}
 		</p>
 		<div class="hero__actions">
-			<Button href="#mitmachen">Jetzt mitmachen</Button>
-			<Button href="#download" variant="outline">Flyer herunterladen</Button>
+			<Button href="#mitmachen">{t('hero_btn_join', 'Jetzt mitmachen')}</Button>
+			<Button href="#download" variant="outline">{t('hero_btn_flyer', 'Flyer herunterladen')}</Button>
 		</div>
 
 		<div class="hero__initiatives">
 			<div class="hero__initiatives-header">
 				<span class="pulse-icon"></span>
-				<span class="hero__initiatives-title">Gemeinsam für die Demokratie — Befreundete Initiativen:</span>
+				<span class="hero__initiatives-title">{t('hero_initiatives_title', 'Gemeinsam für die Demokratie — Befreundete Initiativen:')}</span>
 			</div>
 			<div class="hero__initiatives-list">
 				{

@@ -1,5 +1,6 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
+import { t } from '../../i18n/index';
 
 interface Pillar {
 	number: string;
@@ -18,7 +19,7 @@ const { pillars } = Astro.props;
 
 <section id="saeulen" class="section saeulen">
 	<div class="container">
-		<SectionHeading eyebrow="Unsere Strategie" title="3 Säulen für eine starke Demokratie" />
+		<SectionHeading eyebrow={t('saeulen_eyebrow', 'Unsere Strategie')} title={t('saeulen_title', '3 Säulen für eine starke Demokratie')} />
 		<div class="pillars reveal-stagger">
 			{
 				pillars.map((pillar, i) => (

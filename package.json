@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync:data": "node --env-file=.env scripts/sync-data.mjs",
+    "sync:export": "node --env-file=.env scripts/sync-data.mjs --export-seed"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.3.0",
@@ -17,10 +19,11 @@
     "@fontsource/poppins": "^5.3.0",
     "astro": "^7.3.1"
   },
-  "devDependencies": {
-    "@el-j/google-sheet-translations": "3.0.0-beta.4"
-  },
   "allowScripts": {
-    "esbuild": true
+    "esbuild": true,
+    "fsevents@2.3.3": true
+  },
+  "devDependencies": {
+    "@el-j/google-sheet-translations": "3.0.0-beta.8"
   }
 }

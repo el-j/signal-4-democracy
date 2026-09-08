@@ -1,11 +1,19 @@
 ---
+import { t } from '../i18n/index';
+
 interface Props {
 	items?: string[];
 }
 
-const {
-	items = ['#SolidarischeHeimat', '#DemokratieSchützen', '#GemeinsamStark', '#HeimatFürAlle', '#100000Stimmen'],
-} = Astro.props;
+const defaultItems = [
+	t('ticker_1', '#SolidarischeHeimat'),
+	t('ticker_2', '#DemokratieSchützen'),
+	t('ticker_3', '#GemeinsamStark'),
+	t('ticker_4', '#HeimatFürAlle'),
+	t('ticker_5', '#100000Stimmen'),
+];
+
+const { items = defaultItems } = Astro.props;
 ---
 
 <div class="ticker" aria-hidden="true">

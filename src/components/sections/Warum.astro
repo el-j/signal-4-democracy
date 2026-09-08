@@ -1,16 +1,17 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
+import { t } from '../../i18n/index';
 
 const items = [
-	{ lead: 'Positive Visionen', rest: 'statt nur Protest' },
-	{ lead: 'Solidarität, die anpackt', rest: '– online und vor Ort' },
-	{ lead: 'Eine Heimat für alle', rest: ', die hier leben' },
+	{ lead: t('warum_1_lead', 'Positive Visionen'), rest: t('warum_1_rest', 'statt nur Protest') },
+	{ lead: t('warum_2_lead', 'Solidarität, die anpackt'), rest: t('warum_2_rest', '– online und vor Ort') },
+	{ lead: t('warum_3_lead', 'Eine Heimat für alle'), rest: t('warum_3_rest', ', die hier leben') },
 ];
 ---
 
 <section id="warum" class="section warum">
 	<div class="container">
-		<SectionHeading eyebrow="Warum wir handeln" eyebrowVariant="pink" title="Unsere Antwort auf Hass und Ausgrenzung" />
+		<SectionHeading eyebrow={t('warum_eyebrow', 'Warum wir handeln')} eyebrowVariant="pink" title={t('warum_title', 'Unsere Antwort auf Hass und Ausgrenzung')} />
 		<div class="warum-grid reveal-stagger">
 			{
 				items.map((item, i) => (
