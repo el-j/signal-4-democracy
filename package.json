@@ -9,9 +9,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "sync:data": "node --env-file=.env scripts/sync-data.mjs",
-    "sync:export": "node --env-file=.env scripts/sync-data.mjs --export-seed"
+    "sync:data": "node --env-file=.env ./node_modules/.bin/gst-cryptpad pull",
+    "i18n:pull": "node --env-file=.env ./node_modules/.bin/gst-cryptpad pull",
+    "i18n:push": "node --env-file=.env ./node_modules/.bin/gst-cryptpad push",
+    "i18n:sync": "node --env-file=.env ./node_modules/.bin/gst-cryptpad sync",
+    "i18n:inspect": "node --env-file=.env ./node_modules/.bin/gst-cryptpad inspect"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.3.0",

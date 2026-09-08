@@ -53,6 +53,25 @@ Komponenten unter `src/components/ui/`. Globale Design-Tokens (Farben, Radius,
 Schriften) und Utility-Klassen (`.btn`, `.card`, `.section`, …) leben zentral in
 [src/styles/global.css](src/styles/global.css).
 
+## Inhalte & Übersetzung via CryptPad (i18n)
+
+Alle Texte der Website werden über `@el-j/google-sheet-translations` verwaltet und sind synchronisiert mit einer Ende-zu-Ende verschlüsselten CryptPad-Tabelle.
+
+### CryptPad Synchronisation
+
+Die Befehle nutzen das offizielle `gst-cryptpad`-Tooling des Pakets (Zugangsdaten in `.env`):
+
+```sh
+npm run i18n:pull      # Übersetzungen aus CryptPad herunterladen (auch: npm run sync:data)
+npm run i18n:push      # Lokale Übersetzungen nach CryptPad hochladen
+npm run i18n:sync      # Bidirektionaler Abgleich mit Konfliktauflösung
+npm run i18n:inspect   # Headless Status, Tab-Namen und Zeilenanzahl prüfen
+```
+
+- Die Übersetzungsdaten liegen typisiert und exportiert in `src/i18n/index.ts` mit dem Helfer `t(key, fallback)`.
+- Komponenten und Abschnitte importieren `t()` bzw. strukturierte Getter (`getPillars()`, `getRules()`, `getVisionGoals()`, `getDownloads()`, `getInitiatives()`).
+- Bei Anpassungen in der CryptPad-Tabelle einfach `npm run i18n:pull` ausführen und neu bauen (`npm run build`).
+
 ## Entwicklung
 
 ```sh
@@ -61,20 +80,6 @@ npm run dev       # Dev-Server, siehe Ausgabe für die lokale URL
 npm run build     # Statischen Build nach dist/ erzeugen
 npm run preview   # Build lokal testen
 ```
-
-## Inhalte & Material pflegen
-
-- Texte der Seite basieren auf [MANIFEST.md](MANIFEST.md). Listen-Inhalte (Säulen, Regeln,
-  Vision-Ziele, Downloads) werden als Daten-Arrays in [src/pages/index.astro](src/pages/index.astro)
-  gepflegt und als Props an die jeweilige Section-Komponente übergeben.
-- Platzhalter für Kontakt, Spenden-Link, Threads/Signal-Handles in [src/components/Footer.astro](src/components/Footer.astro)
-  und in [src/components/sections/Mitmachen.astro](src/components/sections/Mitmachen.astro) sind noch mit echten Angaben zu ersetzen.
-- Neue Downloads (z. B. aktualisierter Flyer) unter `public/downloads/` ablegen und in der
-  `downloads`-Liste in [src/pages/index.astro](src/pages/index.astro) verlinken.
-- Farbschema (Grasgrün & Hellrosa), Radius, Schriften etc. sind als CSS-Variablen in
-  [src/styles/global.css](src/styles/global.css) definiert — dort ändern wirkt sich auf die ganze Seite aus.
-- Neuer Seitenabschnitt: eine Komponente unter `src/components/sections/` anlegen (Markup +
-  eigener `<style>`-Block) und in [src/pages/index.astro](src/pages/index.astro) einbinden.
 
 ## Deployment
 

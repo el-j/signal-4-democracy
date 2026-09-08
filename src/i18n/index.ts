@@ -1,9 +1,35 @@
 import deTranslations from '../../translations/de.json';
+import deDeTranslations from '../../translations/de-de.json';
 
 export type TranslationDictionary = Record<string, string>;
 
-// Flat dictionary of all translation strings in the "i18n" sheet
-export const translations: TranslationDictionary = (deTranslations as any)?.i18n ?? {};
+/**
+ * Helper to extract flat dictionary from translations JSON structure,
+ * handling multiple sheet tabs (e.g. "translations", "i18n") or flat key-value pairs.
+ */
+function flattenTranslations(sources: any[]): TranslationDictionary {
+	const dict: TranslationDictionary = {};
+	for (const source of sources) {
+		if (!source || typeof source !== 'object') continue;
+		for (const [sheetOrKey, content] of Object.entries(source)) {
+			if (content && typeof content === 'object') {
+				// Nested sheet structure: { sheetName: { key: value } }
+				for (const [k, v] of Object.entries(content as Record<string, any>)) {
+					if (typeof v === 'string') {
+						dict[k.toLowerCase().trim()] = v;
+					}
+				}
+			} else if (typeof content === 'string') {
+				// Flat structure: { key: value }
+				dict[sheetOrKey.toLowerCase().trim()] = content;
+			}
+		}
+	}
+	return dict;
+}
+
+// Flat dictionary of all translation strings, prioritizing de-de (from gst-cryptpad) over de
+export const translations: TranslationDictionary = flattenTranslations([deTranslations, deDeTranslations]);
 
 /**
  * Retrieves a translated string by its key (case-insensitive).
