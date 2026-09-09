@@ -7,7 +7,6 @@
     "nav_saeulen": "Unsere Säulen",
     "nav_regeln": "Regeln",
     "nav_vision": "Vision 2030",
-    "nav_download": "Download",
     "nav_cta": "Mitmachen",
     "hero_eyebrow": "Gemeinsam für eine solidarische Heimat",
     "hero_title_prefix": "Ein Signal",
@@ -41,22 +40,19 @@
     "warum_3_lead": "Eine Heimat für alle",
     "warum_3_rest": ", die hier leben",
     "saeulen_eyebrow": "Unsere Strategie",
-    "saeulen_title": "3 Säulen für eine starke Demokratie",
-    "pillar_1_number": "01",
+    "saeulen_title": "01",
     "pillar_1_title": "Digitale Aufklärung & Vernetzung",
     "pillar_1_tagline": "Wissen teilen. Desinformation stoppen. Solidarität sichtbar machen.",
     "pillar_1_point_1": "Fakten statt Fake News: recherchierte Informationen gegen rechte Narrative — und positive Geschichten dagegen.",
     "pillar_1_point_2": "Vernetzung, die wirkt: auf Signal und Threads bringen wir Engagierte für schlagkräftige Kampagnen zusammen.",
     "pillar_1_point_3": "Ziel: Bis 2027 100.000 Menschen mit faktenbasierten Inhalten erreichen — und zum Mitmachen motivieren.",
-    "pillar_1_example": "Unsere virale Kampagne #HeimatFürAlle: 78% der Befragten fühlten sich danach besser informiert.",
-    "pillar_2_number": "02",
+    "pillar_1_example": "02",
     "pillar_2_title": "Politisches Engagement für Gerechtigkeit",
     "pillar_2_tagline": "Rechtsextremismus wächst dort, wo Menschen abgehängt werden. Wir ändern das.",
     "pillar_2_point_1": "Soziale Sicherheit für alle: Bedingungsloses Grundeinkommen in Pilotregionen, finanziert durch eine Vermögenssteuer auf Millionenerben.",
     "pillar_2_point_2": "Gerechte Steuern: Reiche und Konzerne leisten ihren fairen Beitrag — für Schulen, Krankenhäuser und Klimaschutz.",
     "pillar_2_point_3": "Mobilität für alle: kostenloser ÖPNV im ländlichen Raum, finanziert durch z.B. eine Stadtmaut.",
-    "pillar_2_example": "Mit lokalen Gewerkschaften haben wir 12 Kommunen von Bürgerräten für gerechte Fördergelder überzeugt.",
-    "pillar_3_number": "03",
+    "pillar_2_example": "03",
     "pillar_3_title": "Gelebte Solidarität vor Ort",
     "pillar_3_tagline": "Demokratie entsteht im Miteinander — nicht im Netz.",
     "pillar_3_point_1": "Aktionen, die verbinden: Müllsammeln, Dorfplatz-Verschönerung, Pop-up-Cafés mit Diskussionen über Demokratie.",
@@ -114,6 +110,11 @@
     "footer_link_regeln": "Unsere Regeln",
     "footer_link_downloads": "Downloads",
     "footer_copyright": "© {year} Signal für Demokratie. Alle Inhalte unter #SolidarischeHeimat.",
-    "footer_transparency": "Transparenz: Finanzen und Aktivitäten im Jahresbericht"
+    "footer_transparency": "Transparenz: Finanzen und Aktivitäten im Jahresbericht",
+    "cta_button": "Download"
+  },
+  "i18n": {
+    "de-de": "Deutsch",
+    "en-gb": "Englisch"
   }
 }
