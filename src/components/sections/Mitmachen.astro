@@ -11,12 +11,6 @@ const cards = [
 		cta: { label: t('mitmachen_card_1_cta', 'Threads & Signal'), href: '#', variant: 'outline' as const },
 	},
 	{
-		icon: '💚',
-		title: t('mitmachen_card_2_title', 'Spenden'),
-		text: t('mitmachen_card_2_text', 'Unterstütze uns mit einem monatlichen Beitrag ab 5 € – 100% fließen in Projekte vor Ort.'),
-		cta: { label: t('mitmachen_card_2_cta', 'Jetzt spenden'), href: '#', variant: 'pink' as const },
-	},
-	{
 		icon: '📣',
 		title: t('mitmachen_card_3_title', 'Weiterleiten'),
 		text: t('mitmachen_card_3_text', 'Teile dieses Leitbild – je mehr wir sind, desto stärker sind wir!'),
@@ -53,7 +47,7 @@ const cards = [
 
 	.mitmachen-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 24px;
 	}
 
