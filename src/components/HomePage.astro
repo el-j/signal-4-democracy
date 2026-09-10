@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Ticker from './Ticker.astro';
+import Hero from './sections/Hero.astro';
+import Warum from './sections/Warum.astro';
+import Saeulen from './sections/Saeulen.astro';
+import Regeln from './sections/Regeln.astro';
+import Vision from './sections/Vision.astro';
+import Mitmachen from './sections/Mitmachen.astro';
+import Download from './sections/Download.astro';
+---
+
+<Layout>
+	<Header />
+
+	<main id="top">
+		<Hero />
+		<Ticker />
+		<Warum />
+		<Saeulen />
+		<Regeln />
+		<Vision />
+		<Mitmachen />
+		<Download />
+	</main>
+
+	<Footer />
+</Layout>

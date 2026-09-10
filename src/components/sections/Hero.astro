@@ -2,28 +2,38 @@
 import Eyebrow from '../ui/Eyebrow.astro';
 import Button from '../ui/Button.astro';
 import Divider from '../ui/Divider.astro';
-import { t, getInitiatives } from '../../i18n/index';
+import { t } from '../../i18n/index';
 
-const initiatives = getInitiatives();
+const INITIATIVE_COUNT = 5;
+
+const initiatives = Array.from({ length: INITIATIVE_COUNT }, (_, i) => {
+	const n = i + 1;
+	return {
+		name: t(`hero_initiative_${n}_name`),
+		url: t(`hero_initiative_${n}_url`),
+		domain: t(`hero_initiative_${n}_domain`),
+		tag: t(`hero_initiative_${n}_tag`),
+	};
+});
 ---
 
 <section class="hero">
 	<div class="container hero__inner">
-		<Eyebrow label={t('hero_eyebrow', 'Gemeinsam für eine solidarische Heimat')} />
-		<h1>{t('hero_title_prefix', 'Ein Signal')} <span class="hero__loud">{t('hero_title_loud', 'für Demokratie.')}</span></h1>
-		<p class="hero__tagline">{t('hero_tagline', 'Demokratie. Gerechtigkeit. Nachbarschaft.')}</p>
+		<Eyebrow label={t('hero_eyebrow')} />
+		<h1>{t('hero_title_prefix')} <span class="hero__loud">{t('hero_title_loud')}</span></h1>
+		<p class="hero__tagline">{t('hero_tagline')}</p>
 		<p class="hero__lead">
-			{t('hero_lead', 'Deutschland gibt uns Freiheit, Sicherheit und Lebensqualität – doch diese Errungenschaften sind kein Selbstläufer. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. Wir handeln jetzt, bevor es zu spät ist.')}
+			{t('hero_lead')}
 		</p>
 		<div class="hero__actions">
-			<Button href="#mitmachen">{t('hero_btn_join', 'Jetzt mitmachen')}</Button>
-			<Button href="#download" variant="outline">{t('hero_btn_flyer', 'Flyer herunterladen')}</Button>
+			<Button href="#mitmachen">{t('hero_btn_join')}</Button>
+			<Button href="#download" variant="outline">{t('hero_btn_flyer')}</Button>
 		</div>
 
 		<div class="hero__initiatives">
 			<div class="hero__initiatives-header">
 				<span class="pulse-icon"></span>
-				<span class="hero__initiatives-title">{t('hero_initiatives_title', 'Gemeinsam für die Demokratie — Befreundete Initiativen:')}</span>
+				<span class="hero__initiatives-title">{t('hero_initiatives_title')}</span>
 			</div>
 			<div class="hero__initiatives-list">
 				{
@@ -33,7 +43,7 @@ const initiatives = getInitiatives();
 							target="_blank"
 							rel="noopener noreferrer"
 							class="initiative-card"
-							title={`${item.name} (${item.domain}) besuchen`}
+							title={t('hero_initiative_visit').replace('{name}', item.name).replace('{domain}', item.domain)}
 						>
 							<span class="initiative-name">{item.name}</span>
 							<span class="initiative-tag">{item.tag}</span>
@@ -59,7 +69,7 @@ const initiatives = getInitiatives();
 
 		<img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" aria-hidden="true" class="hero__logo" />
 		<img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" aria-hidden="true" class="hero__logo hero__logo--two" />
-		<a class="hero__scroll" href="#warum" aria-label="Zum nächsten Abschnitt scrollen">
+		<a class="hero__scroll" href="#warum" aria-label={t('hero_aria_scroll')}>
 			<span></span>
 		</a>
 	</div>

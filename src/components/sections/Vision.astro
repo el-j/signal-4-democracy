@@ -3,19 +3,17 @@ import Eyebrow from '../ui/Eyebrow.astro';
 import Divider from '../ui/Divider.astro';
 import { t } from '../../i18n/index';
 
-interface Props {
-	goals: string[];
-	quote?: string;
-}
+const GOAL_COUNT = 3;
 
-const { goals, quote = t('vision_quote', "Demokratie ist kein Geschenk – sie ist eine Aufgabe. Packen wir's an.") } = Astro.props;
+const goals = Array.from({ length: GOAL_COUNT }, (_, i) => t(`vision_goal_${i + 1}`));
+const quote = t('vision_quote');
 ---
 
 <section id="vision" class="vision">
 	<Divider variant="top" />
 	<div class="vision-dots" aria-hidden="true"></div>
 	<div class="container reveal">
-		<Eyebrow label={t('vision_eyebrow', 'Unsere Vision für 2030')} variant="on-dark" />
+		<Eyebrow label={t('vision_eyebrow')} variant="on-dark" />
 		<div class="vision-grid">
 			<ul class="vision-goals">
 				{goals.map((goal) => <li>{goal}</li>)}

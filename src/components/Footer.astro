@@ -1,48 +1,49 @@
 ---
-import { t } from '../i18n/index';
+import { getLocale, localePath, t } from '../i18n/index';
 
 const year = new Date().getFullYear();
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const rootBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const base = localePath(rootBase, getLocale());
 ---
 
 <footer class="site-footer">
 	<div class="container footer-grid">
 		<div class="footer-brand">
-			<img src={`${base}logo.svg`} alt={t('brand_name', 'Signal für Demokratie') + ' Logo'} class="footer-logo" />
+			<img src={`${rootBase}logo.svg`} alt={`${t('brand_name')} Logo`} class="footer-logo" />
 			<p>
-				{t('footer_tagline', 'Signal für Demokratie — eine Bewegung für eine solidarische Heimat.')}
+				{t('footer_tagline')}
 				<br />
-				{t('footer_subtagline', 'Demokratie. Gerechtigkeit. Nachbarschaft.')}
+				{t('footer_subtagline')}
 			</p>
 		</div>
 
 		<div class="footer-col">
-			<h4>{t('footer_contact_title', 'Kontakt')}</h4>
+			<h4>{t('footer_contact_title')}</h4>
 			<ul>
-				<li><a href="mailto:kontakt@signal-fuer-demokratie.de">{t('footer_link_email', 'E-Mail')}</a></li>
-				<li><a href="#">{t('footer_link_threads', 'Threads')}</a></li>
-				<li><a href="#">{t('footer_link_signal', 'Signal-Gruppe')}</a></li>
+				<li><a href="mailto:kontakt@signal-fuer-demokratie.de">{t('footer_link_email')}</a></li>
+				<li><a href="#">{t('footer_link_threads')}</a></li>
+				<li><a href="#">{t('footer_link_signal')}</a></li>
 			</ul>
 		</div>
 
 		<div class="footer-col">
-			<h4>{t('footer_legal_title', 'Rechtliches & Mehr')}</h4>
+			<h4>{t('footer_legal_title')}</h4>
 			<ul>
-				<li><a href={`${base}impressum/`}>{t('footer_link_impressum', 'Impressum')}</a></li>
-				<li><a href={`${base}datenschutz/`}>{t('footer_link_datenschutz', 'Datenschutzerklärung')}</a></li>
-				<li><a href={`${base}#saeulen`}>{t('footer_link_saeulen', 'Unsere Säulen')}</a></li>
-				<li><a href={`${base}#regeln`}>{t('footer_link_regeln', 'Unsere Regeln')}</a></li>
-				<li><a href={`${base}#download`}>{t('footer_link_downloads', 'Downloads')}</a></li>
+				<li><a href={`${base}impressum/`}>{t('footer_link_impressum')}</a></li>
+				<li><a href={`${base}datenschutz/`}>{t('footer_link_datenschutz')}</a></li>
+				<li><a href={`${base}#saeulen`}>{t('footer_link_saeulen')}</a></li>
+				<li><a href={`${base}#regeln`}>{t('footer_link_regeln')}</a></li>
+				<li><a href={`${base}#download`}>{t('footer_link_downloads')}</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="container footer-bottom">
-		<p>{t('footer_copyright', `© ${year} Signal für Demokratie. Alle Inhalte unter #SolidarischeHeimat.`).replace('{year}', String(year))}</p>
+		<p>{t('footer_copyright').replace('{year}', String(year))}</p>
 		<div class="footer-bottom-links">
-			<a href={`${base}impressum/`}>{t('footer_link_impressum', 'Impressum')}</a>
+			<a href={`${base}impressum/`}>{t('footer_link_impressum')}</a>
 			<span class="sep">·</span>
-			<a href={`${base}datenschutz/`}>{t('footer_link_datenschutz', 'Datenschutz')}</a>
+			<a href={`${base}datenschutz/`}>{t('footer_link_datenschutz')}</a>
 		</div>
 	</div>
 </footer>

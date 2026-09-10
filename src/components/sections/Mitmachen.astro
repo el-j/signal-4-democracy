@@ -6,22 +6,22 @@ import { t } from '../../i18n/index';
 const cards = [
 	{
 		icon: '💬',
-		title: t('mitmachen_card_1_title', 'Lokal aktiv werden'),
-		text: t('mitmachen_card_1_text', 'Schreib uns eine DM auf Threads oder in unserer Signal-Gruppe.'),
-		cta: { label: t('mitmachen_card_1_cta', 'Threads & Signal'), href: '#', variant: 'outline' as const },
+		title: t('mitmachen_card_1_title'),
+		text: t('mitmachen_card_1_text'),
+		cta: { label: t('mitmachen_card_1_cta'), href: '#', variant: 'outline' as const },
 	},
 	{
 		icon: '📣',
-		title: t('mitmachen_card_3_title', 'Weiterleiten'),
-		text: t('mitmachen_card_3_text', 'Teile dieses Leitbild – je mehr wir sind, desto stärker sind wir!'),
-		cta: { label: t('mitmachen_card_3_cta', 'Material teilen'), href: '#download', variant: 'outline' as const },
+		title: t('mitmachen_card_2_title'),
+		text: t('mitmachen_card_2_text'),
+		cta: { label: t('mitmachen_card_2_cta'), href: '#download', variant: 'outline' as const },
 	},
 ];
 ---
 
 <section id="mitmachen" class="section mitmachen">
 	<div class="container mitmachen__inner">
-		<SectionHeading eyebrow={t('mitmachen_eyebrow', 'Mitmachen')} eyebrowVariant="pink" title={t('mitmachen_title', 'Du willst mitgestalten?')} />
+		<SectionHeading eyebrow={t('mitmachen_eyebrow')} eyebrowVariant="pink" title={t('mitmachen_title')} />
 		<div class="mitmachen-grid reveal-stagger">
 			{
 				cards.map((card, i) => (
@@ -36,7 +36,7 @@ const cards = [
 				))
 			}
 		</div>
-		<p class="hashtags">{t('mitmachen_hashtags', '#SolidarischeHeimat · #DemokratieSchützen · #GemeinsamStark')}</p>
+		<p class="hashtags">{t('mitmachen_hashtags')}</p>
 	</div>
 </section>
 

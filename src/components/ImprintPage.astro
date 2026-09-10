@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Eyebrow from './ui/Eyebrow.astro';
+import { getLocale, localePath, t } from '../i18n/index';
+
+const rootBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const base = localePath(rootBase, getLocale());
+---
+
+<Layout title={t('page_title', 'impressum')} description={t('page_description', 'impressum')}>
+	<Header />
+
+	<main class="legal-page">
+		<div class="container">
+			<div class="legal-header">
+				<a href={base} class="back-link">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="19" y1="12" x2="5" y2="12"></line>
+						<polyline points="12 19 5 12 12 5"></polyline>
+					</svg>
+					{t('back_to_home', 'impressum')}
+				</a>
+				<Eyebrow label={t('eyebrow', 'impressum')} />
+				<h1>{t('heading', 'impressum')}</h1>
+				<p class="legal-subtitle">{t('subtitle', 'impressum')}</p>
+			</div>
+
+			<div class="legal-nav">
+				<a href={`${base}impressum/`} class="legal-nav-link active">{t('nav_imprint', 'impressum')}</a>
+				<a href={`${base}datenschutz/`} class="legal-nav-link">{t('nav_privacy', 'impressum')}</a>
+			</div>
+
+			<article class="legal-card card">
+				<section class="legal-section">
+					<h2>{t('section_1_title', 'impressum')}</h2>
+					<div class="legal-details">
+						<p><strong>{t('section_1_name_label', 'impressum')}</strong><br />{t('section_1_name_value', 'impressum')}</p>
+						<p><strong>{t('section_1_type_label', 'impressum')}</strong><br />{t('section_1_type_value', 'impressum')}</p>
+						<p>
+							<strong>{t('section_1_represented_label', 'impressum')}</strong><br />{t('section_1_represented_value', 'impressum')}<br />
+							<span class="placeholder-tag">{t('section_1_represented_placeholder', 'impressum')}</span>
+						</p>
+						<p>
+							<strong>{t('section_1_address_label', 'impressum')}</strong><br />
+							{t('section_1_address_line_1', 'impressum')}<br />
+							<span class="placeholder-tag">{t('section_1_address_line_2', 'impressum')}</span><br />
+							<span class="placeholder-tag">{t('section_1_address_line_3', 'impressum')}</span><br />
+							{t('section_1_address_line_4', 'impressum')}
+						</p>
+					</div>
+				</section>
+
+				<section class="legal-section">
+					<h2>{t('section_2_title', 'impressum')}</h2>
+					<div class="legal-details">
+						<p><strong>{t('section_2_email_label', 'impressum')}</strong> <a href={`mailto:${t('section_2_email_value', 'impressum')}`}>{t('section_2_email_value', 'impressum')}</a></p>
+						<p><strong>{t('section_2_website_label', 'impressum')}</strong> <a href={`https://${t('section_2_website_value', 'impressum')}`}>{t('section_2_website_value', 'impressum')}</a></p>
+					</div>
+				</section>
+
+				<section class="legal-section">
+					<h2>{t('section_3_title', 'impressum')}</h2>
+					<p>
+						<span class="placeholder-tag">{t('section_3_placeholder', 'impressum')}</span><br />
+						{t('section_3_line_1', 'impressum')}<br />
+						<span class="placeholder-tag">{t('section_3_line_2', 'impressum')}</span><br />
+						{t('section_3_line_3', 'impressum')}
+					</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>{t('section_4_title', 'impressum')}</h2>
+					<p>{t('section_4_p_1', 'impressum')}</p>
+					<p>{t('section_4_p_2', 'impressum')}</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>{t('section_5_title', 'impressum')}</h2>
+					<p>{t('section_5_p_1', 'impressum')}</p>
+					<p>{t('section_5_p_2', 'impressum')}</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>{t('section_6_title', 'impressum')}</h2>
+					<p>{t('section_6_p_1', 'impressum')}</p>
+					<p>{t('section_6_p_2', 'impressum')}</p>
+					<p>{t('section_6_p_3', 'impressum')}</p>
+				</section>
+
+				<section class="legal-section">
+					<h2>{t('section_7_title', 'impressum')}</h2>
+					<p>
+						{t('section_7_p_1', 'impressum')}
+						<a href={t('section_7_link', 'impressum')} target="_blank" rel="noopener noreferrer">{t('section_7_link', 'impressum')}</a>.<br />
+						{t('section_7_p_2', 'impressum')}
+					</p>
+					<p>{t('section_7_p_3', 'impressum')}</p>
+				</section>
+			</article>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.legal-page {
+		padding: 48px 0 80px;
+		min-height: calc(100vh - 400px);
+	}
+
+	.legal-header {
+		margin-bottom: 32px;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--green-700);
+		font-weight: 600;
+		font-size: 0.9rem;
+		text-decoration: none;
+		margin-bottom: 20px;
+		transition: color 0.2s ease, transform 0.2s ease;
+	}
+
+	.back-link:hover {
+		color: var(--green-900);
+		transform: translateX(-3px);
+	}
+
+	.legal-header h1 {
+		font-family: var(--font-display);
+		font-size: clamp(2.2rem, 4vw, 3rem);
+		color: var(--green-900);
+		margin: 8px 0 12px;
+	}
+
+	.legal-subtitle {
+		font-size: 1.05rem;
+		color: var(--ink-soft);
+		max-width: 720px;
+		margin: 0;
+	}
+
+	.legal-nav {
+		display: flex;
+		gap: 12px;
+		margin-bottom: 28px;
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 12px;
+	}
+
+	.legal-nav-link {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 0.95rem;
+		text-decoration: none;
+		color: var(--ink-soft);
+		padding: 8px 16px;
+		border-radius: 999px;
+		background: transparent;
+		transition: all 0.2s ease;
+	}
+
+	.legal-nav-link:hover {
+		color: var(--green-700);
+		background: var(--green-50);
+	}
+
+	.legal-nav-link.active {
+		color: #fff;
+		background: var(--green-700);
+	}
+
+	.legal-card {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 36px;
+		line-height: 1.7;
+	}
+
+	.legal-section h2 {
+		font-size: 1.3rem;
+		margin-bottom: 14px;
+		color: var(--green-900);
+		border-bottom: 2px solid var(--green-100);
+		padding-bottom: 8px;
+	}
+
+	.legal-section p {
+		color: var(--ink);
+		margin-bottom: 12px;
+	}
+
+	.legal-section p:last-child {
+		margin-bottom: 0;
+	}
+
+	.legal-details {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 16px;
+		background: var(--green-50);
+		padding: 20px 24px;
+		border-radius: 12px;
+		border: 1px solid var(--border);
+	}
+
+	.legal-details p {
+		margin: 0;
+		font-size: 0.95rem;
+	}
+
+	.placeholder-tag {
+		display: inline-block;
+		background: #fff3d6;
+		color: #8f5b00;
+		border: 1px dashed #d99b26;
+		padding: 2px 8px;
+		border-radius: 6px;
+		font-size: 0.88rem;
+		margin-top: 4px;
+	}
+
+	@media (max-width: 720px) {
+		.legal-card {
+			padding: 24px 18px;
+		}
+
+		.legal-details {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

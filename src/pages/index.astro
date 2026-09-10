@@ -1,36 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Ticker from '../components/Ticker.astro';
-import Hero from '../components/sections/Hero.astro';
-import Warum from '../components/sections/Warum.astro';
-import Saeulen from '../components/sections/Saeulen.astro';
-import Regeln from '../components/sections/Regeln.astro';
-import Vision from '../components/sections/Vision.astro';
-import Mitmachen from '../components/sections/Mitmachen.astro';
-import Download from '../components/sections/Download.astro';
-import { getPillars, getRules, getVisionGoals, getDownloads } from '../i18n/index';
+import HomePage from '../components/HomePage.astro';
+import { getLocaleFromPath, setLocale } from '../i18n/index';
 
-const pillars = getPillars();
-const rules = getRules();
-const visionGoals = getVisionGoals();
-const downloads = getDownloads();
+setLocale(getLocaleFromPath(Astro.url.pathname));
 ---
 
-<Layout>
-	<Header />
-
-	<main id="top">
-		<Hero />
-		<Ticker />
-		<Warum />
-		<Saeulen pillars={pillars} />
-		<Regeln rules={rules} />
-		<Vision goals={visionGoals} />
-		<Mitmachen />
-		<Download downloads={downloads} />
-	</main>
-
-	<Footer />
-</Layout>
+<HomePage />

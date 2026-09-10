@@ -9,23 +9,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync:data": "node --env-file=.env ./node_modules/.bin/gst-cryptpad pull",
-    "i18n:pull": "node --env-file=.env ./node_modules/.bin/gst-cryptpad pull",
-    "i18n:push": "node --env-file=.env ./node_modules/.bin/gst-cryptpad push",
-    "i18n:sync": "node --env-file=.env ./node_modules/.bin/gst-cryptpad sync",
-    "i18n:inspect": "node --env-file=.env ./node_modules/.bin/gst-cryptpad inspect"
+    "sync:data": "gst-cryptpad pull",
+    "i18n:pull": "gst-cryptpad pull",
+    "i18n:push": "gst-cryptpad push",
+    "i18n:sync": "gst-cryptpad sync",
+    "i18n:inspect": "gst-cryptpad inspect"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "@fontsource/poppins": "^5.3.0",
-    "astro": "^7.3.2"
+    "astro": "^7.3.1"
   },
   "allowScripts": {
     "esbuild": true,
     "fsevents@2.3.3": true
   },
   "devDependencies": {
-    "@el-j/google-sheet-translations": "3.0.0-beta.9"
+    "@el-j/google-sheet-translations": "file:../google-sheet-translations"
   }
 }

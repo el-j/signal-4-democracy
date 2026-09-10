@@ -2,21 +2,20 @@
 import SectionHeading from '../ui/SectionHeading.astro';
 import { t } from '../../i18n/index';
 
-interface Rule {
-	title: string;
-	text: string;
-}
+const RULE_COUNT = 4;
 
-interface Props {
-	rules: Rule[];
-}
-
-const { rules } = Astro.props;
+const rules = Array.from({ length: RULE_COUNT }, (_, i) => {
+	const n = i + 1;
+	return {
+		title: t(`rule_${n}_title`),
+		text: t(`rule_${n}_text`),
+	};
+});
 ---
 
 <section id="regeln" class="section regeln">
 	<div class="container">
-		<SectionHeading eyebrow={t('regeln_eyebrow', 'Unsere Regeln')} eyebrowVariant="pink" title={t('regeln_title', 'Klar. Fair. Konsequent.')} />
+		<SectionHeading eyebrow={t('regeln_eyebrow')} eyebrowVariant="pink" title={t('regeln_title')} />
 		<div class="rules-grid reveal-stagger">
 			{
 				rules.map((rule, i) => (

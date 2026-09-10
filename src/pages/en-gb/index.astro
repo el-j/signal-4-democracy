@@ -1,0 +1,8 @@
+---
+import HomePage from '../../components/HomePage.astro';
+import { getLocaleFromPath, setLocale } from '../../i18n/index';
+
+setLocale(getLocaleFromPath(Astro.url.pathname));
+---
+
+<HomePage />

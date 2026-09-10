@@ -1,0 +1,8 @@
+---
+import ImprintPage from '../../components/ImprintPage.astro';
+import { getLocaleFromPath, setLocale } from '../../i18n/index';
+
+setLocale(getLocaleFromPath(Astro.url.pathname));
+---
+
+<ImprintPage />

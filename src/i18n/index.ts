@@ -1,208 +1,131 @@
-import deTranslations from '../../translations/de.json';
-import deDeTranslations from '../../translations/de-de.json';
+import locales from './locales';
 
 export type TranslationDictionary = Record<string, string>;
+export type LocaleCode = (typeof locales)[number];
+
+export const DEFAULT_LOCALE: LocaleCode = 'de-de';
+
+const localeSet = new Set(locales);
+
+let currentLocale: LocaleCode = DEFAULT_LOCALE;
+
+const localeJsonFiles = import.meta.glob('../../translations/*.json', { eager: true }) as Record<string, any>;
+
+const localeJsonByCode = Object.fromEntries(
+	Object.entries(localeJsonFiles)
+		.map(([filePath, content]) => {
+			const match = filePath.match(/\/([^/]+)\.json$/);
+			if (!match) return null;
+			return [match[1].toLowerCase(), content] as const;
+		})
+		.filter((entry): entry is readonly [string, any] => entry !== null),
+);
+
+export const DEFAULT_SHEET = 'hero';
+
+type SheetDictionaries = Record<string, TranslationDictionary>;
 
 /**
- * Helper to extract flat dictionary from translations JSON structure,
- * handling multiple sheet tabs (e.g. "translations", "i18n") or flat key-value pairs.
+ * Extracts one flat key-value dictionary per sheet from a locale's JSON file.
+ * Each top-level key (other than "i18n", the locale display-name labels) is a
+ * separate CryptPad sheet/page, e.g. "hero", "impressum", "datenschutz".
  */
-function flattenTranslations(sources: any[]): TranslationDictionary {
-	const dict: TranslationDictionary = {};
-	for (const source of sources) {
-		if (!source || typeof source !== 'object') continue;
-		for (const [sheetOrKey, content] of Object.entries(source)) {
-			if (content && typeof content === 'object') {
-				// Nested sheet structure: { sheetName: { key: value } }
-				for (const [k, v] of Object.entries(content as Record<string, any>)) {
-					if (typeof v === 'string') {
-						dict[k.toLowerCase().trim()] = v;
-					}
-				}
-			} else if (typeof content === 'string') {
-				// Flat structure: { key: value }
-				dict[sheetOrKey.toLowerCase().trim()] = content;
+function extractSheets(source: unknown): SheetDictionaries {
+	const sheets: SheetDictionaries = {};
+	if (!source || typeof source !== 'object') return sheets;
+
+	for (const [sheetName, sheetValue] of Object.entries(source as Record<string, unknown>)) {
+		if (sheetName === 'i18n' || !sheetValue || typeof sheetValue !== 'object') continue;
+
+		const dict: TranslationDictionary = {};
+		for (const [key, value] of Object.entries(sheetValue as Record<string, unknown>)) {
+			if (typeof value === 'string') {
+				dict[key.toLowerCase().trim()] = value;
 			}
 		}
+		sheets[sheetName.toLowerCase().trim()] = dict;
 	}
-	return dict;
+	return sheets;
 }
 
-// Flat dictionary of all translation strings, prioritizing de-de (from gst-cryptpad) over de
-export const translations: TranslationDictionary = flattenTranslations([deTranslations, deDeTranslations]);
+const sheetsByLocale: Record<LocaleCode, SheetDictionaries> = Object.fromEntries(
+	locales.map((locale) => [locale, extractSheets(localeJsonByCode[locale])]),
+) as Record<LocaleCode, SheetDictionaries>;
+
+const localeLabelsByUiLocale: Record<LocaleCode, Record<string, string>> = Object.fromEntries(
+	locales.map((locale) => {
+		const source = localeJsonByCode[locale];
+		const labels = source && typeof source.i18n === 'object' ? source.i18n : {};
+		return [locale, labels as Record<string, string>];
+	}),
+) as Record<LocaleCode, Record<string, string>>;
+
+export function normalizeLocale(locale?: string): LocaleCode {
+	const normalized = (locale ?? '').toLowerCase().trim();
+	if (localeSet.has(normalized as LocaleCode)) {
+		return normalized as LocaleCode;
+	}
+	return DEFAULT_LOCALE;
+}
+
+export function setLocale(locale?: string): LocaleCode {
+	currentLocale = normalizeLocale(locale);
+	return currentLocale;
+}
+
+export function getLocale(): LocaleCode {
+	return currentLocale;
+}
+
+export function getLocaleFromPath(pathname: string): LocaleCode {
+	const segments = pathname
+		.split('/')
+		.map((segment) => segment.toLowerCase().trim())
+		.filter(Boolean);
+
+	for (const segment of segments) {
+		if (localeSet.has(segment as LocaleCode)) {
+			return segment as LocaleCode;
+		}
+	}
+
+	return DEFAULT_LOCALE;
+}
+
+export function localeToPathPrefix(locale?: string): string {
+	const normalized = normalizeLocale(locale);
+	return normalized === DEFAULT_LOCALE ? '' : `${normalized}/`;
+}
+
+export function localePath(basePath: string, locale?: string): string {
+	const base = basePath.endsWith('/') ? basePath : `${basePath}/`;
+	return `${base}${localeToPathPrefix(locale)}`;
+}
+
+export function getCurrentTranslations(sheet: string = DEFAULT_SHEET): TranslationDictionary {
+	return sheetsByLocale[getLocale()]?.[sheet.toLowerCase().trim()] ?? {};
+}
+
+export function getLocaleLabel(locale: string, uiLocale?: string): string {
+	const resolvedLocale = normalizeLocale(locale);
+	const resolvedUiLocale = normalizeLocale(uiLocale);
+	const localizedLabel = localeLabelsByUiLocale[resolvedUiLocale]?.[resolvedLocale];
+	if (typeof localizedLabel === 'string' && localizedLabel.trim().length > 0) {
+		return localizedLabel;
+	}
+	return resolvedLocale.toUpperCase();
+}
 
 /**
- * Retrieves a translated string by its key (case-insensitive).
- * Returns the fallback string if the key does not exist.
+ * Retrieves a translated string by its key (case-insensitive) from the given
+ * sheet (a top-level page key in the translation JSON, defaulting to "hero").
+ * Returns the key itself if no value is found.
  */
-export function t(key: string, fallback?: string): string {
+export function t(key: string, sheet: string = DEFAULT_SHEET): string {
 	const normalizedKey = key.toLowerCase().trim();
-	const val = translations[normalizedKey];
+	const val = getCurrentTranslations(sheet)[normalizedKey];
 	if (val !== undefined && val !== null && val.trim().length > 0) {
 		return val;
 	}
-	return fallback !== undefined ? fallback : key;
-}
-
-export interface PillarItem {
-	number: string;
-	title: string;
-	tagline: string;
-	points: string[];
-	example: string;
-}
-
-export function getPillars(): PillarItem[] {
-	return [
-		{
-			number: t('pillar_1_number', '01'),
-			title: t('pillar_1_title', 'Digitale Aufklärung & Vernetzung'),
-			tagline: t('pillar_1_tagline', 'Wissen teilen. Desinformation stoppen. Solidarität sichtbar machen.'),
-			points: [
-				t('pillar_1_point_1', 'Fakten statt Fake News: recherchierte Informationen gegen rechte Narrative — und positive Geschichten dagegen.'),
-				t('pillar_1_point_2', 'Vernetzung, die wirkt: auf Signal und Threads bringen wir Engagierte für schlagkräftige Kampagnen zusammen.'),
-				t('pillar_1_point_3', 'Ziel: Bis 2027 100.000 Menschen mit faktenbasierten Inhalten erreichen — und zum Mitmachen motivieren.'),
-			],
-			example: t('pillar_1_example', 'Unsere virale Kampagne #HeimatFürAlle: 78% der Befragten fühlten sich danach besser informiert.'),
-		},
-		{
-			number: t('pillar_2_number', '02'),
-			title: t('pillar_2_title', 'Politisches Engagement für Gerechtigkeit'),
-			tagline: t('pillar_2_tagline', 'Rechtsextremismus wächst dort, wo Menschen abgehängt werden. Wir ändern das.'),
-			points: [
-				t('pillar_2_point_1', 'Soziale Sicherheit für alle: Bedingungsloses Grundeinkommen in Pilotregionen, finanziert durch eine Vermögenssteuer auf Millionenerben.'),
-				t('pillar_2_point_2', 'Gerechte Steuern: Reiche und Konzerne leisten ihren fairen Beitrag — für Schulen, Krankenhäuser und Klimaschutz.'),
-				t('pillar_2_point_3', 'Mobilität für alle: kostenloser ÖPNV im ländlichen Raum, finanziert durch z.B. eine Stadtmaut.'),
-			],
-			example: t('pillar_2_example', 'Mit lokalen Gewerkschaften haben wir 12 Kommunen von Bürgerräten für gerechte Fördergelder überzeugt.'),
-		},
-		{
-			number: t('pillar_3_number', '03'),
-			title: t('pillar_3_title', 'Gelebte Solidarität vor Ort'),
-			tagline: t('pillar_3_tagline', 'Demokratie entsteht im Miteinander — nicht im Netz.'),
-			points: [
-				t('pillar_3_point_1', 'Aktionen, die verbinden: Müllsammeln, Dorfplatz-Verschönerung, Pop-up-Cafés mit Diskussionen über Demokratie.'),
-				t('pillar_3_point_2', 'Partnerschaften auf Augenhöhe: mit Feuerwehren, Sportvereinen und Kulturinitiativen für ein lebendiges Land.'),
-				t('pillar_3_point_3', 'Sichtbare Veränderung: 1.000 lokale Projekte bis 2030 — von renovierten Sportplätzen bis zu solidarischen Festen.'),
-			],
-			example: t('pillar_3_example', 'Unsere #SolidaritätsKilometer-Tour durch 50 Dörfer brachte über 2.000 Menschen zusammen — und 15 neue Ortsgruppen.'),
-		},
-	];
-}
-
-export interface RuleItem {
-	title: string;
-	text: string;
-}
-
-export function getRules(): RuleItem[] {
-	return [
-		{
-			title: t('rule_1_title', 'Kein Platz für Hass'),
-			text: t('rule_1_text', 'Rassismus, Antisemitismus, Sexismus oder Queerfeindlichkeit führen zum sofortigen Ausschluss.'),
-		},
-		{
-			title: t('rule_2_title', 'Fakten statt Gerüchte'),
-			text: t('rule_2_text', 'Wir teilen nur geprüfte Informationen — keine Panikmache, keine Verschwörungstheorien.'),
-		},
-		{
-			title: t('rule_3_title', 'Sicherheit geht vor'),
-			text: t('rule_3_text', 'Keine Screenshots oder Weiterleitungen aus der Signal-Gruppe ohne Absprache.'),
-		},
-		{
-			title: t('rule_4_title', 'Fokus auf das Wesentliche'),
-			text: t('rule_4_text', 'Keine parteipolitischen Grabenkämpfe — wir konzentrieren uns auf unsere drei Säulen.'),
-		},
-	];
-}
-
-export function getVisionGoals(): string[] {
-	return [
-		t('vision_goal_1', '1.000 lokale Gruppen in ganz Deutschland'),
-		t('vision_goal_2', 'Eine Bewegung, die Rechtsextremismus die Luft abwürgt'),
-		t('vision_goal_3', 'Eine Gesellschaft, in der Solidarität und Gerechtigkeit selbstverständlich sind'),
-	];
-}
-
-export interface DownloadItem {
-	name: string;
-	file: string;
-	format: string;
-	size: string;
-	desc: string;
-}
-
-export function getDownloads(): DownloadItem[] {
-	return [
-		{
-			name: t('download_item_1_name', 'Flyer'),
-			file: '/downloads/flyer.jpg',
-			format: 'JPG',
-			size: '390 KB',
-			desc: t('download_item_1_desc', 'Der Signal-für-Demokratie-Flyer zum Ausdrucken und Weitergeben.'),
-		},
-		{
-			name: t('download_item_2_name', 'Logo'),
-			file: '/downloads/logo.svg',
-			format: 'SVG',
-			size: '2 KB',
-			desc: t('download_item_2_desc', 'Unser Logo als Vektorgrafik — verlustfrei skalierbar für Web und Druck.'),
-		},
-		{
-			name: t('download_item_3_name', 'Design-Entwurf (Vektor)'),
-			file: '/downloads/entwurf-design.svg',
-			format: 'SVG',
-			size: '2,1 MB',
-			desc: t('download_item_3_desc', 'Der vollständige Gestaltungsentwurf als SVG-Datei.'),
-		},
-		{
-			name: t('download_item_4_name', 'Design-Entwurf (Druckformat)'),
-			file: '/downloads/entwurf-design.eps',
-			format: 'EPS',
-			size: '1,1 MB',
-			desc: t('download_item_4_desc', 'Der Gestaltungsentwurf im EPS-Format für professionellen Druck.'),
-		},
-	];
-}
-
-export interface InitiativeItem {
-	name: string;
-	url: string;
-	domain: string;
-	tag: string;
-}
-
-export function getInitiatives(): InitiativeItem[] {
-	return [
-		{
-			name: t('hero_initiative_1_name', 'Widersetzen'),
-			url: 'https://widersetzen.com',
-			domain: 'widersetzen.com',
-			tag: t('hero_initiative_1_tag', 'Aktionsbündnis'),
-		},
-		{
-			name: t('hero_initiative_2_name', 'Zusammen gegen Rechts'),
-			url: 'https://zusammen-gegen-rechts.org',
-			domain: 'zusammen-gegen-rechts.org',
-			tag: t('hero_initiative_2_tag', 'Demokratie-Bündnis'),
-		},
-		{
-			name: t('hero_initiative_3_name', 'Omas gegen Rechts'),
-			url: 'https://omasgegenrechts.de',
-			domain: 'omasgegenrechts.de',
-			tag: t('hero_initiative_3_tag', 'Zivilcourage'),
-		},
-		{
-			name: t('hero_initiative_4_name', 'Campact'),
-			url: 'https://campact.de',
-			domain: 'campact.de',
-			tag: t('hero_initiative_4_tag', 'Bürgerbewegung'),
-		},
-		{
-			name: t('hero_initiative_5_name', 'Correctiv'),
-			url: 'https://correctiv.org',
-			domain: 'correctiv.org',
-			tag: t('hero_initiative_5_tag', 'Recherche-Netzwerk'),
-		},
-	];
+	return key;
 }

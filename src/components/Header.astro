@@ -1,40 +1,71 @@
 ---
 import Button from './ui/Button.astro';
+import locales from '../i18n/locales';
+import { DEFAULT_LOCALE, getLocale, getLocaleLabel, localePath } from '../i18n/index';
 import { t } from '../i18n/index';
 
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const rootBase = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const activeLocale = getLocale();
+const base = localePath(rootBase, activeLocale);
+const languageLabel = t('nav_language');
+const brandName = t('brand_name');
+const brandWords = brandName.split(' ');
+const brandNameLine1 = brandWords.slice(0, -1).join(' ');
+const brandNameLine2 = brandWords.slice(-1).join(' ');
+
+const languageOptions = locales.map((code) => ({
+	code,
+	short: getLocaleLabel(code, activeLocale),
+	href: localePath(rootBase, code),
+	isActive: code === activeLocale || (code === DEFAULT_LOCALE && activeLocale === DEFAULT_LOCALE),
+}));
 
 const links = [
-	{ href: `${base}#warum`, label: t('nav_warum', 'Warum wir handeln') },
-	{ href: `${base}#saeulen`, label: t('nav_saeulen', 'Unsere Säulen') },
-	{ href: `${base}#regeln`, label: t('nav_regeln', 'Regeln') },
-	{ href: `${base}#vision`, label: t('nav_vision', 'Vision 2030') },
-	{ href: `${base}#download`, label: t('nav_download', 'Download') },
+	{ href: `${base}#warum`, label: t('nav_warum') },
+	{ href: `${base}#saeulen`, label: t('nav_saeulen') },
+	{ href: `${base}#regeln`, label: t('nav_regeln') },
+	{ href: `${base}#vision`, label: t('nav_vision') },
+	{ href: `${base}#download`, label: t('nav_download') },
 ];
 ---
 
 <header class="site-header">
 	<div class="signal-stripe" aria-hidden="true"></div>
-	<div class="container bar">
+	<div class="nav-container">
 		<a class="brand" href={base}>
-			<img src={`${base}logo.svg`} alt={t('brand_name', 'Signal für Demokratie') + ' Logo'} class="brand__logo" />
-			<span class="brand__name">Signal für<br />Demokratie</span>
+			<img src={`${rootBase}logo.svg`} alt={`${brandName} Logo`} class="brand__logo" />
+			<span class="brand__name">{brandNameLine1}<br />{brandNameLine2}</span>
 		</a>
 
-		<nav class="nav" aria-label="Hauptnavigation">
+		<nav class="nav" aria-label={t('nav_aria_main')}>
 			{links.map((link) => <a href={link.href}>{link.label}</a>)}
 		</nav>
 
-		<Button href={`${base}#mitmachen`} class="nav-cta">{t('nav_cta', 'Mitmachen')}</Button>
+		<div class="lang-switch" aria-label={languageLabel}>
+			{languageOptions.map((option) => (
+				<a href={option.href} class:list={{ active: option.isActive }} aria-current={option.isActive ? 'page' : undefined}>
+					{option.short}
+				</a>
+			))}
+		</div>
+
+		<Button href={`${base}#mitmachen`} class="nav-cta">{t('nav_cta')}</Button>
 
 		<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
-		<label for="nav-toggle" class="nav-toggle" aria-label="Menü öffnen">
+		<label for="nav-toggle" class="nav-toggle" aria-label={t('nav_aria_toggle')}>
 			<span></span>
 		</label>
 
-		<nav class="nav-mobile" aria-label="Mobile Navigation">
+		<nav class="nav-mobile" aria-label={t('nav_aria_mobile')}>
 			{links.map((link) => <a href={link.href}>{link.label}</a>)}
-			<Button href={`${base}#mitmachen`}>{t('nav_cta', 'Mitmachen')}</Button>
+			<div class="lang-switch lang-switch--mobile" aria-label={languageLabel}>
+				{languageOptions.map((option) => (
+					<a href={option.href} class:list={{ active: option.isActive }} aria-current={option.isActive ? 'page' : undefined}>
+						{option.short}
+					</a>
+				))}
+			</div>
+			<Button href={`${base}#mitmachen`}>{t('nav_cta')}</Button>
 		</nav>
 	</div>
 </header>
@@ -69,14 +100,6 @@ const links = [
 		}
 	}
 
-	.bar {
-		display: flex;
-		align-items: center;
-		gap: 24px;
-		padding-top: 14px;
-		padding-bottom: 14px;
-	}
-
 	.brand {
 		display: flex;
 		align-items: center;
@@ -106,6 +129,41 @@ const links = [
 	.nav {
 		display: flex;
 		gap: 22px;
+	}
+
+	.lang-switch {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		padding: 4px;
+		border-radius: 999px;
+		border: 1px solid var(--border);
+		background: rgba(255, 255, 255, 0.8);
+	}
+
+	.lang-switch a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 38px;
+		height: 30px;
+		padding: 0 10px;
+		border-radius: 999px;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-decoration: none;
+		color: var(--ink-soft);
+		transition: background 0.2s ease, color 0.2s ease;
+	}
+
+	.lang-switch a:hover {
+		color: var(--green-700);
+	}
+
+	.lang-switch a.active {
+		background: var(--green-700);
+		color: #fff;
 	}
 
 	.nav a {
@@ -179,7 +237,8 @@ const links = [
 
 	@media (max-width: 860px) {
 		.nav,
-		.nav-cta {
+		.nav-cta,
+		.lang-switch {
 			display: none;
 		}
 
@@ -210,6 +269,11 @@ const links = [
 		.nav-mobile .btn {
 			justify-content: center;
 			margin-top: 6px;
+		}
+
+		.lang-switch--mobile {
+			display: inline-flex;
+			align-self: flex-start;
 		}
 
 		.nav-toggle-input:checked ~ .nav-mobile {

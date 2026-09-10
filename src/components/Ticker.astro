@@ -5,13 +5,9 @@ interface Props {
 	items?: string[];
 }
 
-const defaultItems = [
-	t('ticker_1', '#SolidarischeHeimat'),
-	t('ticker_2', '#DemokratieSchützen'),
-	t('ticker_3', '#GemeinsamStark'),
-	t('ticker_4', '#HeimatFürAlle'),
-	t('ticker_5', '#100000Stimmen'),
-];
+const TICKER_ITEM_COUNT = 5;
+
+const defaultItems = Array.from({ length: TICKER_ITEM_COUNT }, (_, i) => t(`ticker_${i + 1}`));
 
 const { items = defaultItems } = Astro.props;
 ---

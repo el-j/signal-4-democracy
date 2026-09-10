@@ -3,28 +3,23 @@ import SectionHeading from '../ui/SectionHeading.astro';
 import Button from '../ui/Button.astro';
 import { t } from '../../i18n/index';
 
-interface DownloadItem {
-	name: string;
-	file: string;
-	format: string;
-	size: string;
-	desc: string;
-}
+const DOWNLOAD_COUNT = 4;
 
-interface Props {
-	downloads: DownloadItem[];
-}
-
-const { downloads } = Astro.props;
+const downloads = Array.from({ length: DOWNLOAD_COUNT }, (_, i) => {
+	const n = i + 1;
+	return {
+		name: t(`download_item_${n}_name`),
+		file: t(`download_item_${n}_file`),
+		format: t(`download_item_${n}_format`),
+		size: t(`download_item_${n}_size`),
+		desc: t(`download_item_${n}_desc`),
+	};
+});
 ---
 
 <section id="download" class="section download">
 	<div class="container">
-		<SectionHeading
-			eyebrow={t('download_eyebrow', 'Material')}
-			title={t('download_title', 'Download-Bereich')}
-			description={t('download_description', 'Lade unseren Flyer und weiteres Material herunter, um es zu verteilen oder auszudrucken.')}
-		/>
+		<SectionHeading eyebrow={t('download_eyebrow')} title={t('download_title')} description={t('download_description')} />
 		<div class="downloads-grid reveal-stagger">
 			{
 				downloads.map((item, i) => (
@@ -35,7 +30,7 @@ const { downloads } = Astro.props;
 						<div class="download-card__footer">
 							<span>{item.size}</span>
 							<Button href={`${import.meta.env.BASE_URL}${item.file.replace(/^\//, '')}`} download>
-								{t('download_button', 'Herunterladen')}
+								{t('download_button')}
 							</Button>
 						</div>
 					</div>

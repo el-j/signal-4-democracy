@@ -35,6 +35,10 @@ Statische Website mit [Astro](https://astro.build), keine zusätzlichen UI-Frame
 │   │       ├── Vision.astro
 │   │       ├── Mitmachen.astro
 │   │       └── Download.astro
+│   ├── i18n/                     Übersetzungs- und Lokalisierungsdateien
+│   │   ├── locales.ts            Enthält alle verfügbaren Sprachlokalisierungen
+│   │   └── index.ts              Helfer `t()`
+│   ├── lib/                      languageData.json
 │   ├── layouts/
 │   │   └── Layout.astro          HTML-Grundgerüst, Fonts, Hintergrund-Blobs
 │   ├── styles/
@@ -43,6 +47,7 @@ Statische Website mit [Astro](https://astro.build), keine zusätzlichen UI-Frame
 │   │   └── interactions.js       Scroll-Reveal & Header-Scroll-Zustand
 │   └── pages/
 │       └── index.astro           Startseite: Inhalte (Daten) + Abschnitte zusammensetzen
+├── translations/               Übersetzungsdateien für die CryptPad-Synchronisation (z. B. `de-DE.json`, `en-GB.json`)
 └── astro.config.mjs
 ```
 
@@ -69,7 +74,7 @@ npm run i18n:inspect   # Headless Status, Tab-Namen und Zeilenanzahl prüfen
 ```
 
 - Die Übersetzungsdaten liegen typisiert und exportiert in `src/i18n/index.ts` mit dem Helfer `t(key, fallback)`.
-- Komponenten und Abschnitte importieren `t()` bzw. strukturierte Getter (`getPillars()`, `getRules()`, `getVisionGoals()`, `getDownloads()`, `getInitiatives()`).
+- Komponenten und Abschnitte importieren `t()`.
 - Bei Anpassungen in der CryptPad-Tabelle einfach `npm run i18n:pull` ausführen und neu bauen (`npm run build`).
 
 ## Entwicklung
