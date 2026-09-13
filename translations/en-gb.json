@@ -12,6 +12,7 @@
     "nav_regeln": "Rules",
     "nav_vision": "Vision 2030",
     "hero_initiative_1_tag": "Action alliance",
+    "hero_initiative_1_name": "Widersetzen",
     "hero_initiative_2_name": "Zusammen gegen Rechts",
     "hero_initiative_2_tag": "Democracy alliance",
     "hero_initiative_3_name": "Omas gegen Rechts",
@@ -141,7 +142,8 @@
     "hero_title_loud": "for Democracy.",
     "hero_tagline": "Democracy. Justice. Neighbourhood.",
     "hero_lead": "Germany gives us freedom, security and quality of life - but these achievements do not sustain themselves. Right-wing extremism, social division and the climate crisis threaten our cohesion. We are acting now, before it is too late.",
-    "hero_btn_join": "Join now"
+    "hero_btn_join": "Join now",
+    "hero_btn_flyer":"Download Material"
   },
   "impressum": {
     "page_title": "Legal notice — Signal for Democracy",

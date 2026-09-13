@@ -27,6 +27,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      
+      - name: update Translations
+        run: npm run i18n:pull
 
       - name: Build
         run: npm run build
