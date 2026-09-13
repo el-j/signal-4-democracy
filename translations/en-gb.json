@@ -1,4 +1,8 @@
 {
+  "i18n": {
+    "de-de": "German",
+    "en-gb": "English"
+  },
   "hero": {
     "site_title": "Signal for Democracy - Together for a Home of Solidarity",
     "site_description": "Democracy. Justice. Neighbourhood. A movement for a home of solidarity in Germany.",
@@ -7,17 +11,6 @@
     "nav_saeulen": "Our pillars",
     "nav_regeln": "Rules",
     "nav_vision": "Vision 2030",
-    "nav_language": "Language",
-    "nav_cta": "Get involved",
-    "hero_eyebrow": "Together for a Home of Solidarity",
-    "hero_title_prefix": "A Signal",
-    "hero_title_loud": "for Democracy.",
-    "hero_tagline": "Democracy. Justice. Neighbourhood.",
-    "hero_lead": "Germany gives us freedom, security and quality of life - but these achievements do not sustain themselves. Right-wing extremism, social division and the climate crisis threaten our cohesion. We are acting now, before it is too late.",
-    "hero_btn_join": "Join now",
-    "hero_btn_flyer": "Download flyer",
-    "hero_initiatives_title": "Together for democracy - Partner initiatives:",
-    "hero_initiative_1_name": "Widersetzen",
     "hero_initiative_1_tag": "Action alliance",
     "hero_initiative_2_name": "Zusammen gegen Rechts",
     "hero_initiative_2_tag": "Democracy alliance",
@@ -141,11 +134,14 @@
     "nav_aria_toggle": "Open menu",
     "nav_aria_mobile": "Mobile navigation",
     "hero_aria_scroll": "Scroll to next section",
-    "hero_initiative_visit": "Visit {name} ({domain})"
-  },
-  "i18n": {
-    "de-de": "German",
-    "en-gb": "English"
+    "nav_language": "Language",
+    "hero_initiative_visit": "Visit {name} ({domain})",
+    "hero_eyebrow": "Together for a Home of Solidarity",
+    "hero_title_prefix": "A Signal",
+    "hero_title_loud": "for Democracy.",
+    "hero_tagline": "Democracy. Justice. Neighbourhood.",
+    "hero_lead": "Germany gives us freedom, security and quality of life - but these achievements do not sustain themselves. Right-wing extremism, social division and the climate crisis threaten our cohesion. We are acting now, before it is too late.",
+    "hero_btn_join": "Join now"
   },
   "impressum": {
     "page_title": "Legal notice — Signal for Democracy",
@@ -154,12 +150,6 @@
     "eyebrow": "Legal information",
     "heading": "Legal notice",
     "subtitle": "Information according to Section 5 Digital Services Act (DDG) and Section 18 para. 2 Interstate Media Treaty (MStV)",
-    "nav_imprint": "Legal notice",
-    "nav_privacy": "Privacy policy",
-    "section_1_title": "1. Information according to Section 5 DDG",
-    "section_1_name_label": "Initiative name:",
-    "section_1_name_value": "Signal for Democracy",
-    "section_1_type_label": "Type of organisation:",
     "section_1_type_value": "Civil society initiative and alliance for democracy and social cohesion",
     "section_1_represented_label": "Represented by:",
     "section_1_represented_value": "Signal for Democracy initiative",
@@ -193,7 +183,9 @@
     "section_7_p_1": "The European Commission provides a platform for online dispute resolution (ODR):",
     "section_7_link": "https://ec.europa.eu/consumers/odr/",
     "section_7_p_2": "You can find our email address above in the legal notice.",
-    "section_7_p_3": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+    "section_7_p_3": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
+    "nav_privacy": "Privacy policy",
+    "section_1_title": "1. Information according to Section 5 DDG"
   },
   "datenschutz": {
     "page_title": "Privacy policy — Signal for Democracy",
@@ -203,10 +195,6 @@
     "heading": "Privacy policy",
     "subtitle": "Information about the processing of your personal data in accordance with the General Data Protection Regulation (GDPR) and the Telecommunications Digital Services Data Protection Act (TDDDG).",
     "nav_imprint": "Legal notice",
-    "nav_privacy": "Privacy policy",
-    "section_1_title": "1. Controller responsible for data processing",
-    "section_1_intro": "The controller responsible for collecting and processing personal data on this website within the meaning of the GDPR (Art. 4 no. 7 GDPR) is:",
-    "section_1_initiative_label": "Initiative:",
     "section_1_initiative_value": "Signal for Democracy",
     "section_1_represented_label": "Represented by:",
     "section_1_represented_placeholder": "[Name of the authorized representative / spokesperson]",

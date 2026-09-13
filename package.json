@@ -9,17 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync:data": "gst-cryptpad pull",
-    "i18n:pull": "gst-cryptpad pull",
-    "i18n:push": "gst-cryptpad push",
-    "i18n:sync": "gst-cryptpad sync",
+    "sync:data": "gst-cryptpad pull --sheet-titles=hero,i18n,impressum,datenschutz",
+    "i18n:pull": "gst-cryptpad pull --sheet-titles=hero,i18n,impressum,datenschutz",
+    "i18n:push": "gst-cryptpad push --override=true",
+    "i18n:sync": "gst-cryptpad sync --sheet-titles=hero,i18n,impressum,datenschutz",
     "i18n:inspect": "gst-cryptpad inspect"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.3.0",
     "@fontsource/inter": "^5.3.0",
     "@fontsource/poppins": "^5.3.0",
-    "astro": "^7.3.1"
+    "astro": "^7.3.2"
   },
   "allowScripts": {
     "esbuild": true,

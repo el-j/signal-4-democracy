@@ -1,5 +1,17 @@
 [
   {
+    "i18n": {
+      "de-de": {
+        "de-de": "Deutsch",
+        "en-gb": "Englisch"
+      },
+      "en-gb": {
+        "de-de": "German",
+        "en-gb": "English"
+      }
+    }
+  },
+  {
     "hero": {
       "de-de": {
         "site_title": "Signal für Demokratie — Gemeinsam für eine solidarische Heimat",
@@ -9,17 +21,6 @@
         "nav_saeulen": "Unsere Säulen",
         "nav_regeln": "Regeln",
         "nav_vision": "Vision 2030",
-        "nav_language": "Sprache",
-        "nav_cta": "Mitmachen",
-        "hero_eyebrow": "Gemeinsam für eine solidarische Heimat",
-        "hero_title_prefix": "Ein Signal",
-        "hero_title_loud": "für Demokratie.",
-        "hero_tagline": "Demokratie. Gerechtigkeit. Nachbarschaft.",
-        "hero_lead": "Deutschland gibt uns Freiheit, Sicherheit und Lebensqualität – doch diese Errungenschaften sind kein Selbstläufer. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. Wir handeln jetzt, bevor es zu spät ist.",
-        "hero_btn_join": "Jetzt mitmachen",
-        "hero_btn_flyer": "Flyer herunterladen",
-        "hero_initiatives_title": "Gemeinsam für die Demokratie — Befreundete Initiativen:",
-        "hero_initiative_1_name": "Widersetzen",
         "hero_initiative_1_tag": "Aktionsbündnis",
         "hero_initiative_2_name": "Zusammen gegen Rechts",
         "hero_initiative_2_tag": "Demokratie-Bündnis",
@@ -143,7 +144,14 @@
         "nav_aria_toggle": "Menü öffnen",
         "nav_aria_mobile": "Mobile Navigation",
         "hero_aria_scroll": "Zum nächsten Abschnitt scrollen",
-        "hero_initiative_visit": "{name} ({domain}) besuchen"
+        "nav_language": "Sprache",
+        "hero_initiative_visit": "{name} ({domain}) besuchen",
+        "hero_eyebrow": "Gemeinsam für eine solidarische Heimat",
+        "hero_title_prefix": "Ein Signal",
+        "hero_title_loud": "für Demokratie.",
+        "hero_tagline": "Demokratie. Gerechtigkeit. Nachbarschaft.",
+        "hero_lead": "Deutschland gibt uns Freiheit, Sicherheit und Lebensqualität – doch diese Errungenschaften sind kein Selbstläufer. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. Wir handeln jetzt, bevor es zu spät ist.",
+        "hero_btn_join": "Jetzt mitmachen"
       },
       "en-gb": {
         "site_title": "Signal for Democracy - Together for a Home of Solidarity",
@@ -153,17 +161,6 @@
         "nav_saeulen": "Our pillars",
         "nav_regeln": "Rules",
         "nav_vision": "Vision 2030",
-        "nav_language": "Language",
-        "nav_cta": "Get involved",
-        "hero_eyebrow": "Together for a Home of Solidarity",
-        "hero_title_prefix": "A Signal",
-        "hero_title_loud": "for Democracy.",
-        "hero_tagline": "Democracy. Justice. Neighbourhood.",
-        "hero_lead": "Germany gives us freedom, security and quality of life - but these achievements do not sustain themselves. Right-wing extremism, social division and the climate crisis threaten our cohesion. We are acting now, before it is too late.",
-        "hero_btn_join": "Join now",
-        "hero_btn_flyer": "Download flyer",
-        "hero_initiatives_title": "Together for democracy - Partner initiatives:",
-        "hero_initiative_1_name": "Widersetzen",
         "hero_initiative_1_tag": "Action alliance",
         "hero_initiative_2_name": "Zusammen gegen Rechts",
         "hero_initiative_2_tag": "Democracy alliance",
@@ -287,19 +284,14 @@
         "nav_aria_toggle": "Open menu",
         "nav_aria_mobile": "Mobile navigation",
         "hero_aria_scroll": "Scroll to next section",
-        "hero_initiative_visit": "Visit {name} ({domain})"
-      }
-    }
-  },
-  {
-    "i18n": {
-      "de-de": {
-        "de-de": "Deutsch",
-        "en-gb": "Englisch"
-      },
-      "en-gb": {
-        "de-de": "German",
-        "en-gb": "English"
+        "nav_language": "Language",
+        "hero_initiative_visit": "Visit {name} ({domain})",
+        "hero_eyebrow": "Together for a Home of Solidarity",
+        "hero_title_prefix": "A Signal",
+        "hero_title_loud": "for Democracy.",
+        "hero_tagline": "Democracy. Justice. Neighbourhood.",
+        "hero_lead": "Germany gives us freedom, security and quality of life - but these achievements do not sustain themselves. Right-wing extremism, social division and the climate crisis threaten our cohesion. We are acting now, before it is too late.",
+        "hero_btn_join": "Join now"
       }
     }
   },
@@ -312,12 +304,6 @@
         "eyebrow": "Rechtliche Hinweise",
         "heading": "Impressum",
         "subtitle": "Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG) und § 18 Abs. 2 Medienstaatsvertrag (MStV)",
-        "nav_imprint": "Impressum",
-        "nav_privacy": "Datenschutzerklärung",
-        "section_1_title": "1. Angaben gemäß § 5 DDG",
-        "section_1_name_label": "Name der Initiative:",
-        "section_1_name_value": "Signal für Demokratie",
-        "section_1_type_label": "Art der Vereinigung:",
         "section_1_type_value": "Zivilgesellschaftliche Initiative & Bündnis für Demokratie und Zusammenhalt",
         "section_1_represented_label": "Vertreten durch:",
         "section_1_represented_value": "Initiative „Signal für Demokratie“",
@@ -351,7 +337,9 @@
         "section_7_p_1": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
         "section_7_link": "https://ec.europa.eu/consumers/odr/",
         "section_7_p_2": "Unsere E-Mail-Adresse finden Sie oben im Impressum.",
-        "section_7_p_3": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+        "section_7_p_3": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+        "nav_privacy": "Datenschutzerklärung",
+        "section_1_title": "1. Angaben gemäß § 5 DDG"
       },
       "en-gb": {
         "page_title": "Legal notice — Signal for Democracy",
@@ -360,12 +348,6 @@
         "eyebrow": "Legal information",
         "heading": "Legal notice",
         "subtitle": "Information according to Section 5 Digital Services Act (DDG) and Section 18 para. 2 Interstate Media Treaty (MStV)",
-        "nav_imprint": "Legal notice",
-        "nav_privacy": "Privacy policy",
-        "section_1_title": "1. Information according to Section 5 DDG",
-        "section_1_name_label": "Initiative name:",
-        "section_1_name_value": "Signal for Democracy",
-        "section_1_type_label": "Type of organisation:",
         "section_1_type_value": "Civil society initiative and alliance for democracy and social cohesion",
         "section_1_represented_label": "Represented by:",
         "section_1_represented_value": "Signal for Democracy initiative",
@@ -399,7 +381,9 @@
         "section_7_p_1": "The European Commission provides a platform for online dispute resolution (ODR):",
         "section_7_link": "https://ec.europa.eu/consumers/odr/",
         "section_7_p_2": "You can find our email address above in the legal notice.",
-        "section_7_p_3": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+        "section_7_p_3": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.",
+        "nav_privacy": "Privacy policy",
+        "section_1_title": "1. Information according to Section 5 DDG"
       }
     }
   },
@@ -413,10 +397,6 @@
         "heading": "Datenschutzerklärung",
         "subtitle": "Informationen über die Verarbeitung Ihrer personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) und des Telekommunikation-Digitale-Dienste-Datenschutz-Gesetzes (TDDDG).",
         "nav_imprint": "Impressum",
-        "nav_privacy": "Datenschutzerklärung",
-        "section_1_title": "1. Verantwortlicher für die Datenverarbeitung",
-        "section_1_intro": "Verantwortlich für die Erhebung und Verarbeitung personenbezogener Daten auf dieser Website im Sinne der DSGVO (Art. 4 Nr. 7 DSGVO) ist:",
-        "section_1_initiative_label": "Initiative:",
         "section_1_initiative_value": "Signal für Demokratie",
         "section_1_represented_label": "Vertreten durch:",
         "section_1_represented_placeholder": "[Name der vertretungsberechtigten Person / Sprecher:in]",
@@ -482,10 +462,6 @@
         "heading": "Privacy policy",
         "subtitle": "Information about the processing of your personal data in accordance with the General Data Protection Regulation (GDPR) and the Telecommunications Digital Services Data Protection Act (TDDDG).",
         "nav_imprint": "Legal notice",
-        "nav_privacy": "Privacy policy",
-        "section_1_title": "1. Controller responsible for data processing",
-        "section_1_intro": "The controller responsible for collecting and processing personal data on this website within the meaning of the GDPR (Art. 4 no. 7 GDPR) is:",
-        "section_1_initiative_label": "Initiative:",
         "section_1_initiative_value": "Signal for Democracy",
         "section_1_represented_label": "Represented by:",
         "section_1_represented_placeholder": "[Name of the authorized representative / spokesperson]",
