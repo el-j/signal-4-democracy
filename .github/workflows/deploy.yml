@@ -29,6 +29,9 @@ jobs:
         run: npm ci
       
       - name: update Translations
+        env:
+          CRYPTPAD_URL: ${{ secrets.CRYPTPAD_URL || vars.CRYPTPAD_URL }}
+          CRYPTPAD_PASSWORD: ${{ secrets.CRYPTPAD_PASSWORD || vars.CRYPTPAD_PASSWORD }}
         run: npm run i18n:pull
 
       - name: Build
