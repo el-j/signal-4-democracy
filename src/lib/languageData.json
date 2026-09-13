@@ -153,7 +153,7 @@
         "hero_tagline": "Demokratie. Gerechtigkeit. Nachbarschaft.",
         "hero_lead": "Deutschland gibt uns Freiheit, Sicherheit und Lebensqualität – doch diese Errungenschaften sind kein Selbstläufer. Rechtsextremismus, soziale Spaltung und Klimakrise bedrohen unser Miteinander. Wir handeln jetzt, bevor es zu spät ist.",
         "hero_btn_join": "Jetzt mitmachen",
-        "hero_btn_flyer":"Material runterladen"
+        "hero_btn_flyer": "Material runterladen"
       },
       "en-gb": {
         "site_title": "Signal for Democracy - Together for a Home of Solidarity",
@@ -295,7 +295,7 @@
         "hero_tagline": "Democracy. Justice. Neighbourhood.",
         "hero_lead": "Germany gives us freedom, security and quality of life - but these achievements do not sustain themselves. Right-wing extremism, social division and the climate crisis threaten our cohesion. We are acting now, before it is too late.",
         "hero_btn_join": "Join now",
-        "hero_btn_flyer":"Download Material"
+        "hero_btn_flyer": "Download Material"
       }
     }
   },

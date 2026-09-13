@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "sync:data": "gst-cryptpad pull --sheet-titles=hero,i18n,impressum,datenschutz",
     "i18n:pull": "gst-cryptpad pull --sheet-titles=hero,i18n,impressum,datenschutz",
-    "i18n:push": "gst-cryptpad push --override=true",
+    "i18n:push": "gst-cryptpad push --override=true --sheet-titles=hero,i18n,impressum,datenschutz",
     "i18n:sync": "gst-cryptpad sync --sheet-titles=hero,i18n,impressum,datenschutz",
     "i18n:inspect": "gst-cryptpad inspect"
   },
@@ -26,6 +26,6 @@
     "fsevents@2.3.3": true
   },
   "devDependencies": {
-    "@el-j/google-sheet-translations": "file:../google-sheet-translations"
+    "@el-j/google-sheet-translations": "3.0.0-beta.15"
   }
 }
